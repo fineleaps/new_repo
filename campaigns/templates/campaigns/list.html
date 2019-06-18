@@ -1,0 +1,38 @@
+{% extends "portal/base.html" %}
+{% load static %}
+{% block title %}Campaigns{% endblock %}
+
+{% block content %}
+
+
+    <div class="contacts-area mg-b-15">
+            <div class="container-fluid">
+                {%  if campaigns %}
+                    <div class="row">
+                        {% for campaign in campaigns %}
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                <div class="bg-primary panel-heading text-center">
+                                    <h3 style="color: white!important;">{{ campaign.get_short_form }}</h3>
+                                </div>
+                                <div class="hpanel hblue contact-panel contact-panel-cs responsive-mg-b-30">
+                                    <div class="panel-body custom-panel-jw">
+                                        <p class="all-pro-ad">Campaign other name/slogun etc</p>
+                                        <p>{{ campaign.details }}</p>
+                                    </div>
+                                    <div class="course-des">
+                                        <p><span><i class="fa fa-clock"></i></span> <b>Leads:</b> 6 Months</p>
+                                        <p><span><i class="fa fa-clock"></i></span> <b>Views:</b> Jane Doe</p>
+                                        <p><span><i class="fa fa-clock"></i></span> <b>DNC:</b> 100+</p>
+                                    </div>
+                                        <a href="{% url "campaigns:detail" slug=campaign.slug %}"><button class="btn btn-primary waves-effect waves-light btn-block">Goto Camapign</button> </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                        <span class="alert alert-warning " >No Campaigns</span>
+                {% endif %}
+            </div>
+        </div>
+
+{% endblock %}

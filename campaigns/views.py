@@ -33,8 +33,6 @@ class CampaignDetailView(LoginRequiredMixin, DetailView):
 def prospect_get(request, slug):
     campaign = get_object_or_404(Campaign, slug=slug, executives__in=(request.user.executive, ))
     prospect = campaign.prospect_get
-    result_form = ResultAddForm()
-    print(result_form)
-    context = {'prospect': prospect, 'campaign': campaign, "result_form": result_form}
+    context = {'prospect': prospect, 'campaign': campaign}
     return render(request, 'campaigns/prospect_get.html', context)
 

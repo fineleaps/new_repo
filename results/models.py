@@ -15,6 +15,16 @@ class Result(models.Model):
     def __str__(self):
         return "{} -{} - {}".format(self.prospect_campaign_relation.prospect, self.prospect_campaign_relation.campaign,
                               self.result_choice)
+
+    def get_prospect(self):
+        return self.prospect_campaign_relation.prospect
+
+    def get_campaign(self):
+        return self.prospect_campaign_relation.campaign
+
+    @property
+    def get_month(self):
+        return self.on.month
     #
     # def clean(self):
     #     if self.prospect_campaign_relation and not self.prospect_campaign_relation.attempted:

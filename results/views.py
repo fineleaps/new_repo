@@ -8,70 +8,6 @@ from django.urls import reverse_lazy
 from django.http import Http404
 
 
-# class ResultAddView(LoginRequiredMixin, CreateView):
-#     form_class = ResultAddForm
-#     template_name = "campaigns/prospect_get.html"
-#     success_url = reverse_lazy("campaigns:prospect_get")
-#     model = Result
-#
-#     def form_valid(self, form):
-#         pcr = get_object_or_404(ProspectCampaignRelation, campaign__slug=self.kwargs.get('campaign_slug'),
-#                                 prospect__id=self.kwargs.get('prospect_id'),
-#                                 campaign__executives__in=(self.request.user.executive,))
-#         form.instance.by = self.request.user
-#         form.instance.prospect_campaign_relation = pcr
-#         form.save()
-#         return redirect("campaigns:prospect_get", slug=pcr.campaign.slug)
-#
-#     def get(self, *args, **kwargs):
-#         return redirect("campaigns:prospect_get")
-#
-#
-
-#
-# class ResultAddView(LoginRequiredMixin, FormView):
-#
-#     form_class = ResultAddForm
-#     template_name = "campaigns/prospect_get.html"
-#
-#     def form_valid(self, form):
-#         print("///////////////--------------------------////////////////////////////////")
-#
-#         post_dict = form.cleaned_data
-#         pcr = get_object_or_404(ProspectCampaignRelation, campaign__slug=self.kwargs.get('campaign_slug'),
-#                                 prospect__id=self.kwargs.get('prospect_id'), campaign__executives__in=(self.request.user.executive,))
-#         re = Result.objects.create(prospect_campaign_relation=pcr,
-#                               result_choice=post_dict.get('result_choice'),
-#                               by=self.request.user.executive,
-#                               details=post_dict.get('details'))
-#         print(re)
-#         print("///////////////--------------------------////////////////////////////////")
-#         return redirect('campaigns:prospect_get', kwargs={'slug': pcr.campaign.slug})
-#
-#     # def get(self, request, *args, **kwargs):
-#     #     return redirect("campaigns:prospect_get", slug=self.kwargs.get('slug'))
-
-#
-def result_add(request, campaign_slug, prospect_id):
-    if request.method == 'POST':
-        form = ResultAddForm(request.POST)
-        if form.is_valid():
-            post_dict = form.data
-            print(post_dict)
-            print("---------------------------")
-            pcr = get_object_or_404(ProspectCampaignRelation, campaign__slug=campaign_slug, prospect__id=prospect_id,
-                                    campaign__executives__in=(request.user.executive, ))
-            Result.objects.create(prospect_campaign_relation=pcr,
-                                         result_choice=post_dict.get('result_choice'),
-                                         by=request.user.executive,
-                                         details=post_dict.get('details'))
-            return redirect('campaigns:prospect_get', slug=pcr.campaign.slug)
-        else:
-            raise Http404("Bad Request")
-
-    return redirect('campaigns:prospect_get', slug=campaign_slug)
-
-
 class LeadsListView(LoginRequiredMixin, ListView):
 
     model = Result
@@ -112,3 +48,17 @@ class DNCsListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return super().get_queryset().filter(by=self.request.user.executive)
+
+
+def result_add(request, campaign_slug, prospect_id):
+    if request.method == 'POST':
+        post_dict = request.POST
+        pcr = get_object_or_404(ProspectCampaignRelation, campaign__slug=campaign_slug, prospect__id=prospect_id,
+                                campaign__executives__in=(request.user.executive, ))
+        Result.objects.create(prospect_campaign_relation=pcr,
+                                     result_choice=post_dict.get('result_choice'),
+                                     by=request.user.executive,
+                                     details=post_dict.get('details'))
+        return redirect('campaigns:prospect_get', slug=pcr.campaign.slug)
+    return redirect('campaigns:prospect_get', slug=campaign_slug)
+

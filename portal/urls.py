@@ -11,5 +11,8 @@ urlpatterns = [
     url(r'^$', views.HomeView.as_view(), name='home'),
 
     url(r'^profile/$', views.ProfileView.as_view(), name='profile'),
+    url(r'^profile/update/$', views.ProfileUpdateView.as_view(), name='profile_update'),
+
+    url(r"^password/change/$", views.password_change, name='password_change'),
 
 ]

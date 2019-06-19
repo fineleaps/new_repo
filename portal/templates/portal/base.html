@@ -15,6 +15,15 @@
     <!-- favicon
 		============================================ -->
 
+    <!-- for jquery UI(datepicker) not required for template -->
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
+        <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+
+    <!-- jquery UI -->
 
 
     <link rel="shortcut icon" type="image/x-icon" href="{% static "img/logo/favicon.png" %}">
@@ -80,19 +89,25 @@
 
 <body>
 
+{##}
+{#    {% if messages %}#}
+{#        {% for message in messages %}#}
+{#            <span class="alert btn alert-{{ message.tags }}">{{ message }}</span>#}
+{#        {% endfor %}#}
+{#    {% endif %}#}
+
     <!-- Start Left menu area -->
     {% include "portal/left_menu.html" %}
     <!-- End Left menu area -->
 
     <!-- Start Welcome area -->
     <div class="all-content-wrapper">
-
-
         <!-- Start Header -->
         {% include "portal/header.html" %}
         <!-- End Header -->
 
         {% block content %}
+
         {% endblock %}
 
         <!-- Start Footer -->
@@ -100,6 +115,20 @@
         <!-- End Footer -->
 
     </div>
+
+        <script>
+            $("#jqueryDatePicker").datepicker();
+        </script>
+{#        <script>#}
+{#        $(function() {#}
+{#          $('#jqueryDateRangePicker').daterangepicker({#}
+{#            opens: 'left'#}
+{#          }, function(start, end, label) {#}
+{#            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));#}
+{#          });#}
+{#        });#}
+{#        </script>#}
+
 
 
     <!-- Start Scripts -->

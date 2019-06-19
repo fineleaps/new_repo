@@ -180,9 +180,9 @@
                                                         <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                     </a>
                                                 <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                    <li><a href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a>
+                                                    <li><a href="{% url "portal:profile_update" %}"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
                                                     </li>
-                                                    <li><a href="{% url "portal:profile" %}"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
+                                                    <li><a href="{% url "portal:password_change" %}"><span class="edu-icon edu-home-admin author-log-ic"></span>Change Password</a>
                                                     </li>
                                                     <li><a href="#"><span class="edu-icon edu-settings author-log-ic"></span>Settings</a>
                                                     </li>
@@ -823,6 +823,19 @@
             </div>
         </div>
         <!-- Mobile Menu end -->
+
+        {% if messages %}
+
+            {% for message in messages %}
+                 <div class="alert alert-{{ message.tags }} alert-{{ message.tags }}-style alert-st-bg alert-st-bg11">
+                    <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
+                            <span class="icon-sc-cl" aria-hidden="true">&times;</span>
+                    </button>
+                    <p><strong>{{ message.tags|upper }}! </strong>{{ message }}</p>
+                 </div>
+            {% endfor %}
+        {% endif %}
+
 
         <div class="breadcome-area">
             <div class="container-fluid">

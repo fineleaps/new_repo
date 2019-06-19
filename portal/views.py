@@ -1,8 +1,32 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-from django.views.generic import View, DetailView
+from django.views.generic import View, DetailView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Executive
+from django.urls import reverse_lazy
+from .forms import ProfileUpdateForm
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash, get_user_model
+from django.contrib.auth.forms import PasswordChangeForm
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from . import alert_messages
+
+
+@login_required
+def password_change(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, alert_messages.PASSWORD_CHANGED_MESSAGE)
+            return redirect('portal:home')
+        else:
+            messages.error(request, alert_messages.FORM_INVALID_MESSAGE)
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'portal/password_change.html', {
+        'form': form
+    })
 
 
 class HomeView(LoginRequiredMixin, View):
@@ -25,7 +49,22 @@ class ProfileView(LoginRequiredMixin, DetailView):
         return self.request.user.executive
 
 
-#
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+
+    model = Executive
+    form_class = ProfileUpdateForm
+    template_name = "portal/profile_update.html"
+    success_url = reverse_lazy("portal:profile_update")
+
+    def get_object(self, queryset=None):
+        return self.request.user.executive
+
+    def form_valid(self, form):
+        messages.success(self.request, alert_messages.PROFILE_UPDATED_MESSAGE)
+        return super().form_valid(form)
+
+
+
 # e
 # @login_required
 # def profile(request):

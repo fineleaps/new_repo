@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Alert | Kiaalap - Kiaalap Admin Template</title>
+    <title>Edit Professor | Kiaalap - Kiaalap Admin Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -53,9 +53,12 @@
 		============================================ -->
     <link rel="stylesheet" href="css/calendar/fullcalendar.min.css">
     <link rel="stylesheet" href="css/calendar/fullcalendar.print.min.css">
-    <!-- style CSS
+    <!-- forms CSS
 		============================================ -->
-    <link rel="stylesheet" href="css/alerts.css">
+    <link rel="stylesheet" href="css/form/all-type-forms.css">
+    <!-- dropzone CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/dropzone/dropzone.css">
     <!-- style CSS
 		============================================ -->
     <link rel="stylesheet" href="style.css">
@@ -97,7 +100,7 @@
                         <li>
                             <a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a class="has-arrow" href="all-professors.html" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Professors</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="All Professors" href="all-professors.html"><span class="mini-sub-pro">All Professors</span></a></li>
@@ -192,7 +195,7 @@
                                 <li><a title="Dual List Box" href="dual-list-box.html"><span class="mini-sub-pro">Dual List Box</span></a></li>
                             </ul>
                         </li>
-                        <li class="active">
+                        <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-apps icon-wrap"></span> <span class="mini-click-non">App views</span></a>
                             <ul class="submenu-angle app-mini-nb-dp" aria-expanded="false">
                                 <li><a title="Notifications" href="notifications.html"><span class="mini-sub-pro">Notifications</span></a></li>
@@ -933,8 +936,8 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a data-toggle="collapse" data-target="#demomi" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul id="demomi" class="collapse dropdown-header-top">
+                                        <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                            <ul id="demo" class="collapse dropdown-header-top">
                                                 <li><a href="mailbox.html">Inbox</a>
                                                 </li>
                                                 <li><a href="mailbox-view.html">View Mail</a>
@@ -1061,7 +1064,7 @@
                                         <ul class="breadcome-menu">
                                             <li><a href="#">Home</a> <span class="bread-slash">/</span>
                                             </li>
-                                            <li><span class="bread-blod">Alert</span>
+                                            <li><span class="bread-blod">Edit Professor</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -1072,323 +1075,175 @@
                 </div>
             </div>
         </div>
-        <!-- Alert Start-->
-        <div class="alert-area mg-b-15">
+        <!-- Single pro tab review Start-->
+        <div class="single-pro-review-area mt-t-30 mg-b-15">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="alert-wrap1 shadow-inner wrap-alert-b">
-                            <div class="alert-title">
-                                <h2>Bootstrap Default Alert</h2>
-                                <p>These are the default bootstrap alerts style</p>
-                            </div>
-                            <div class="alert alert-success" role="alert">
-                                <strong>Well done!</strong> You successfully read this important message.
-                            </div>
-                            <div class="alert alert-info" role="alert">
-                                <strong>Heads up!</strong> This alert needs your attention.
-                            </div>
-                            <div class="alert alert-warning" role="alert">
-                                <strong>Warning!</strong> Better check yourself, you're not looking too good.
-                            </div>
-                            <div class="alert alert-danger alert-mg-b" role="alert">
-                                <strong>Oh snap!</strong> Change a few things up and try submitting again.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="alert-wrap2 shadow-inner wrap-alert-b">
-                            <div class="alert-title">
-                                <h2>Bootstrap Default Cross Alert</h2>
-                                <p>These are the default bootstrap Cross alerts style</p>
-                            </div>
-                            <div class="alert alert-success">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-                                <strong>Success!</strong> Indicates a successful action.
-                            </div>
-                            <div class="alert alert-info">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-                                <strong>Info!</strong> Indicates a neutral informative change.
-                            </div>
-                            <div class="alert alert-warning">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-                                <strong>Warning!</strong> Indicates a warning that might need attention.
-                            </div>
-                            <div class="alert alert-danger alert-mg-b">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-                                <strong>Danger!</strong> Indicates a dangerous negative action.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="alert-icon shadow-inner wrap-alert-b">
-                            <div class="alert-title">
-                                <h2>Bootstrap Custom Alert</h2>
-                                <p>These are the Custom bootstrap alerts style One</p>
-                            </div>
-                            <div class="alert alert-success alert-st-one" role="alert">
-                                <i class="fa fa-check edu-checked-pro admin-check-pro" aria-hidden="true"></i>
-                                <p class="message-mg-rt"><strong>Well done!</strong> You successfully read this important message.</p>
-                            </div>
-                            <div class="alert alert-info alert-st-two" role="alert">
-                                <i class="fa fa-info-circle edu-inform admin-check-pro" aria-hidden="true"></i>
-                                <p class="message-mg-rt"><strong>Heads up!</strong> Alert needs your attention, but it's not important.</p>
-                            </div>
-                            <div class="alert alert-warning alert-st-three" role="alert">
-                                <i class="fa fa-exclamation-triangle edu-warning-danger admin-check-pro" aria-hidden="true"></i>
-                                <p class="message-mg-rt"><strong>Warning!</strong> Better check yourself, you're not looking too good.</p>
-                            </div>
-                            <div class="alert alert-danger alert-mg-b alert-st-four" role="alert">
-                                <i class="fa fa-window-close edu-danger-error admin-check-pro" aria-hidden="true"></i>
-                                <i class="fa fa-times edu-danger-error admin-check-pro" aria-hidden="true"></i>
-                                <p class="message-mg-rt"><strong>Oh snap!</strong> Change a few things up and try submitting again.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="alert-icon shadow-inner wrap-alert-b">
-                            <div class="alert-title">
-                                <h2>Bootstrap Custom Cross Alert</h2>
-                                <p>These are the Custom bootstrap Cross alerts style One</p>
-                            </div>
-                            <div class="alert alert-success alert-success-style1">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-									</button>
-                                <i class="fa fa-check edu-checked-pro admin-check-pro" aria-hidden="true"></i>
-                                <p><strong>Success!</strong> Indicates a successful action.</p>
-                            </div>
-                            <div class="alert alert-info alert-success-style2">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-									</button>
-                                <i class="fa fa-info-circle edu-inform admin-check-pro" aria-hidden="true"></i>
-                                <p><strong>Info!</strong> Indicates a neutral informative change.</p>
-                            </div>
-                            <div class="alert alert-warning alert-success-style3">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-									</button>
-                                <i class="fa fa-exclamation-triangle edu-warning-danger admin-check-pro" aria-hidden="true"></i>
-                                <p><strong>Warning!</strong> A warning that might need attention.</p>
-                            </div>
-                            <div class="alert alert-danger alert-mg-b alert-success-style4">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-									</button>
-                                <i class="fa fa-times edu-danger-error admin-check-pro" aria-hidden="true"></i>
-                                <p><strong>Danger!</strong> A dangerous negative action.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="alert-icon shadow-inner wrap-alert-b">
-                            <div class="alert-title">
-                                <h2>Bootstrap Custom Alert</h2>
-                                <p>These are the Custom bootstrap alerts style One</p>
-                            </div>
-                            <div class="alert alert-success alert-st-one" role="alert">
-                                <i class="fa fa-check edu-checked-pro admin-check-pro admin-check-pro-none" aria-hidden="true"></i>
-                                <p class="message-mg-rt message-alert-none"><strong>Well done!</strong> You successfully read this important message.</p>
-                            </div>
-                            <div class="alert alert-info alert-st-two" role="alert">
-                                <i class="fa fa-info-circle edu-inform admin-check-pro admin-check-pro-none" aria-hidden="true"></i>
-                                <p class="message-mg-rt message-alert-none"><strong>Heads up!</strong> Alert needs your attention, but it's not important.</p>
-                            </div>
-                            <div class="alert alert-warning alert-st-three" role="alert">
-                                <i class="fa fa-exclamation-triangle edu-warning-danger admin-check-pro admin-check-pro-none" aria-hidden="true"></i>
-                                <p class="message-mg-rt message-alert-none"><strong>Warning!</strong> Better check yourself, you're not looking too good.</p>
-                            </div>
-                            <div class="alert alert-danger alert-mg-b alert-st-four" role="alert">
-                                <i class="fa fa-times edu-danger-error admin-check-pro admin-check-pro-none" aria-hidden="true"></i>
-                                <p class="message-mg-rt message-alert-none"><strong>Oh snap!</strong> Change a few things up and try submitting again.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="alert-icon shadow-inner wrap-alert-b">
-                            <div class="alert-title">
-                                <h2>Bootstrap Custom Cross Alert</h2>
-                                <p>These are the Custom bootstrap Cross alerts style One</p>
-                            </div>
-                            <div class="alert alert-success alert-success-style1 alert-success-stylenone">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-									</button>
-                                <i class="fa fa-check edu-checked-pro admin-check-sucess admin-check-pro-none" aria-hidden="true"></i>
-                                <p class="message-alert-none"><strong>Success!</strong> Indicates a successful action.</p>
-                            </div>
-                            <div class="alert alert-info alert-success-style2 alert-success-stylenone">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-									</button>
-                                <i class="fa fa-info-circle edu-inform admin-check-sucess admin-check-pro-none" aria-hidden="true"></i>
-                                <p class="message-alert-none"><strong>Info!</strong> Indicates a neutral informative change.</p>
-                            </div>
-                            <div class="alert alert-warning alert-success-style3 alert-success-stylenone">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-									</button>
-                                <i class="fa fa-exclamation-triangle edu-warning-danger admin-check-pro admin-check-pro-none" aria-hidden="true"></i>
-                                <p class="message-alert-none"><strong>Warning!</strong> A warning that might need attention.</p>
-                            </div>
-                            <div class="alert alert-danger alert-mg-b alert-success-style4 alert-success-stylenone">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-									</button>
-                                <i class="fa fa-times edu-danger-error admin-check-pro admin-check-pro-none" aria-hidden="true"></i>
-                                <p class="message-alert-none"><strong>Danger!</strong> A dangerous negative action.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="alert-icon shadow-inner wrap-alert-b">
-                            <div class="alert-title">
-                                <h2>Bootstrap Custom Alert</h2>
-                                <p>These are the Custom bootstrap alerts style One</p>
-                            </div>
-                            <div class="alert alert-success alert-st-one alert-st-bg" role="alert">
-                                <i class="fa fa-check edu-checked-pro admin-check-pro admin-check-pro-clr" aria-hidden="true"></i>
-                                <p class="message-mg-rt"><strong>Well done!</strong> You successfully read this important message.</p>
-                            </div>
-                            <div class="alert alert-info alert-st-two alert-st-bg1" role="alert">
-                                <i class="fa fa-info-circle edu-inform admin-check-pro admin-check-pro-clr1" aria-hidden="true"></i>
-                                <p class="message-mg-rt"><strong>Heads up!</strong> Alert needs your attention, but it's not important.</p>
-                            </div>
-                            <div class="alert alert-warning alert-st-three alert-st-bg2" role="alert">
-                                <i class="fa fa-exclamation-triangle edu-warning-danger admin-check-pro admin-check-pro-clr2" aria-hidden="true"></i>
-                                <p class="message-mg-rt"><strong>Warning!</strong> Better check yourself, you're not looking too good.</p>
-                            </div>
-                            <div class="alert alert-danger alert-mg-b alert-st-four alert-st-bg3" role="alert">
-                                <i class="fa fa-times edu-danger-error admin-check-pro admin-check-pro-clr3" aria-hidden="true"></i>
-                                <p class="message-mg-rt"><strong>Oh snap!</strong> Change a few things up and try submitting again.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="alert-icon shadow-inner wrap-alert-b">
-                            <div class="alert-title">
-                                <h2>Bootstrap Custom Cross Alert</h2>
-                                <p>These are the Custom bootstrap Cross alerts style One</p>
-                            </div>
-                            <div class="alert alert-success alert-success-style1 alert-st-bg">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-									</button>
-                                <i class="fa fa-check edu-checked-pro admin-check-pro admin-check-pro-clr" aria-hidden="true"></i>
-                                <p><strong>Success!</strong> Indicates a successful action.</p>
-                            </div>
-                            <div class="alert alert-info alert-success-style2 alert-st-bg1">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-									</button>
-                                <i class="fa fa-info-circle edu-inform admin-check-pro admin-check-pro-clr1" aria-hidden="true"></i>
-                                <p><strong>Info!</strong> Indicates a neutral informative change.</p>
-                            </div>
-                            <div class="alert alert-warning alert-success-style3 alert-st-bg2">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-									</button>
-                                <i class="fa fa-exclamation-triangle edu-warning-danger admin-check-pro admin-check-pro-clr2" aria-hidden="true"></i>
-                                <p><strong>Warning!</strong> A warning that might need attention.</p>
-                            </div>
-                            <div class="alert alert-danger alert-mg-b alert-success-style4 alert-st-bg3">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-									</button>
-                                <i class="fa fa-times edu-danger-error admin-check-pro admin-check-pro-clr3" aria-hidden="true"></i>
-                                <p><strong>Danger!</strong> A dangerous negative action.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="alert-icon shadow-inner">
-                            <div class="alert-title">
-                                <h2>Bootstrap Custom Alert</h2>
-                                <p>These are the Custom bootstrap alerts style One</p>
-                            </div>
-                            <div class="alert alert-success alert-st-one alert-st-bg alert-st-bg11" role="alert">
-                                <i class="fa fa-check edu-checked-pro admin-check-pro admin-check-pro-clr admin-check-pro-clr11" aria-hidden="true"></i>
-                                <p class="message-mg-rt"><strong>Well done!</strong> Successfully read this important alert message.</p>
-                            </div>
-                            <div class="alert alert-info alert-st-two alert-st-bg1 alert-st-bg12" role="alert">
-                                <i class="fa fa-info-circle edu-inform admin-check-pro admin-check-pro-clr1 admin-check-pro-clr12" aria-hidden="true"></i>
-                                <p class="message-mg-rt"><strong>Heads up!</strong> Alert needs your attention, but it's not important.</p>
-                            </div>
-                            <div class="alert alert-warning alert-st-three alert-st-bg2 alert-st-bg13" role="alert">
-                                <i class="fa fa-exclamation-triangle edu-warning-danger admin-check-pro admin-check-pro-clr2 admin-check-pro-clr13" aria-hidden="true"></i>
-                                <p class="message-mg-rt"><strong>Warning!</strong> Better check yourself, you're not looking too good.</p>
-                            </div>
-                            <div class="alert alert-danger alert-mg-b alert-st-four alert-st-bg3 alert-st-bg14" role="alert">
-                                <i class="fa fa-times edu-danger-error admin-check-pro admin-check-pro-clr3 admin-check-pro-clr14" aria-hidden="true"></i>
-                                <p class="message-mg-rt"><strong>Oh snap!</strong> Change a few things up and try submitting again.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="alert-icon shadow-inner res-mg-t-30 table-mg-t-pro-n">
-                            <div class="alert-title">
-                                <h2>Bootstrap Custom Cross Alert</h2>
-                                <p>These are the Custom bootstrap Cross alerts style One</p>
-                            </div>
-
-                            <br><br><br>
-
-
-                            <div class="alert alert-success alert-success-style1 alert-st-bg alert-st-bg11">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-                                </button>
-                                <i class="fa fa-check edu-checked-pro admin-check-pro admin-check-pro-clr admin-check-pro-clr11" aria-hidden="true"></i>
-                                <p><strong>Success!</strong> Indicates a successful action.</p>
-                            </div>
-
-
-                                                        <br><br><br>
-
-                            <div class="alert alert-info alert-success-style2 alert-st-bg1 alert-st-bg12">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-									</button>
-                                <i class="fa fa-info-circle edu-inform admin-check-pro admin-check-pro-clr1 admin-check-pro-clr12" aria-hidden="true"></i>
-                                <p><strong>Info!</strong> Indicates a neutral informative change.</p>
-                            </div>
-                            <div class="alert alert-warning alert-success-style3 alert-st-bg2 alert-st-bg13">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-									</button>
-                                <i class="fa fa-exclamation-triangle edu-warning-danger admin-check-pro admin-check-pro-clr2 admin-check-pro-clr13" aria-hidden="true"></i>
-                                <p><strong>Warning!</strong> A warning that might need attention.</p>
-                            </div>
-                            <div class="alert alert-danger alert-mg-b alert-success-style4 alert-st-bg3 alert-st-bg14">
-                                <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
-										<span class="icon-sc-cl" aria-hidden="true">&times;</span>
-									</button>
-                                <i class="fa fa-times edu-danger-error admin-check-pro admin-check-pro-clr3 admin-check-pro-clr14" aria-hidden="true"></i>
-                                <p><strong>Danger!</strong> A dangerous negative action.</p>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="product-payment-inner-st">
+                            <ul id="myTabedu1" class="tab-review-design">
+                                <li class="active"><a href="#description">Edit Basic Information</a></li>
+                                <li><a href="#reviews"> Edit Acount Information</a></li>
+                                <li><a href="#INFORMATION">Edit Social Information</a></li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content custom-product-edit">
+                                <div class="product-tab-list tab-pane fade active in" id="description">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="review-content-section">
+                                                <div id="dropzone1" class="pro-ad">
+                                                    <form action="#" class="dropzone dropzone-custom needsclick add-professors" id="demo1-upload">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <div class="form-group">
+                                                                    <input name="number" type="text" class="form-control" placeholder="Fly Zend" value="Fly Zend">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" placeholder="E104, catn-2, UK." value="E104, catn-2, UK.">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" placeholder="12/10/1993" value="12/10/1993">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="number" class="form-control" placeholder="1213" value="1213">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="number" class="form-control" placeholder="01962067309" value="01962067309">
+                                                                </div>
+                                                                <div class="form-group alert-up-pd">
+                                                                    <div class="dz-message needsclick download-custom">
+                                                                        <i class="fa fa-download edudropnone" aria-hidden="true"></i>
+                                                                        <h2 class="edudropnone">Drop image here or click to upload.</h2>
+                                                                        <p class="edudropnone"><span class="note needsclick">(This is just a demo dropzone. Selected image is <strong>not</strong> actually uploaded.)</span>
+                                                                        </p>
+                                                                        <input name="imageico" class="hd-pro-img" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" placeholder="CSE" value="CSE">
+                                                                </div>
+                                                                <div class="form-group edit-ta-resize res-mg-t-15">
+                                                                    <textarea name="description">Lorem ipsum dolor sit amet of, consectetur adipiscing elitable. Vestibulum tincidunt est vitae ultrices accumsan.</textarea>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <select class="form-control">
+																		<option>Male</option>
+																		<option>Male</option>
+																		<option>Female</option>
+																	</select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <select class="form-control">
+																			<option>Nepal</option>
+																			<option>India</option>
+																			<option>Pakistan</option>
+																			<option>Amerika</option>
+																			<option>China</option>
+																			<option>Dubai</option>
+																			<option>Nepal</option>
+																		</select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <select class="form-control">
+																			<option>Maharastra</option>
+																			<option>Gujarat</option>
+																			<option>Maharastra</option>
+																			<option>Rajastan</option>
+																			<option>Maharastra</option>
+																			<option>Rajastan</option>
+																			<option>Gujarat</option>
+																		</select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <select class="form-control">
+																			<option>Baroda</option>
+																			<option>Surat</option>
+																			<option>Baroda</option>
+																			<option>Navsari</option>
+																			<option>Baroda</option>
+																			<option>Surat</option>
+																		</select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" placeholder="www.uttara.com" value="www.uttara.com">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="payment-adress">
+                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-tab-list tab-pane fade" id="reviews">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="review-content-section">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="devit-card-custom">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" placeholder="Email" value="Admin@gmail.com">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="number" class="form-control" placeholder="Phone" value="01962067309">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="password" class="form-control" placeholder="Password" value="#123#123">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="password" class="form-control" placeholder="Confirm Password" value="#123#123">
+                                                            </div>
+                                                            <a href="#!" class="btn btn-primary waves-effect waves-light">Submit</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-tab-list tab-pane fade" id="INFORMATION">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="review-content-section">
+												<div class="row">
+													<div class="col-lg-12">
+														<div class="devit-card-custom">
+															<div class="form-group">
+																<input type="url" class="form-control" placeholder="Facebook URL" value="http://www.facebook.com">
+															</div>
+															<div class="form-group">
+																<input type="url" class="form-control" placeholder="Twitter URL" value="http://www.twitter.com">
+															</div>
+															<div class="form-group">
+																<input type="url" class="form-control" placeholder="Google Plus" value="http://www.google-plus.com">
+															</div>
+															<div class="form-group">
+																<input type="url" class="form-control" placeholder="Linkedin URL" value="http://www.Linkedin.com">
+															</div>
+															<button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+														</div>
+													</div>
+												</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Alert End-->
         <div class="footer-copyright-area">
             <div class="container-fluid">
                 <div class="row">
@@ -1434,6 +1289,31 @@
 		============================================ -->
     <script src="js/metisMenu/metisMenu.min.js"></script>
     <script src="js/metisMenu/metisMenu-active.js"></script>
+    <!-- morrisjs JS
+		============================================ -->
+    <script src="js/sparkline/jquery.sparkline.min.js"></script>
+    <script src="js/sparkline/jquery.charts-sparkline.js"></script>
+    <!-- calendar JS
+		============================================ -->
+    <script src="js/calendar/moment.min.js"></script>
+    <script src="js/calendar/fullcalendar.min.js"></script>
+    <script src="js/calendar/fullcalendar-active.js"></script>
+    <!-- maskedinput JS
+		============================================ -->
+    <script src="js/jquery.maskedinput.min.js"></script>
+    <script src="js/masking-active.js"></script>
+    <!-- datepicker JS
+		============================================ -->
+    <script src="js/datepicker/jquery-ui.min.js"></script>
+    <script src="js/datepicker/datepicker-active.js"></script>
+    <!-- form validate JS
+		============================================ -->
+    <script src="js/form-validation/jquery.form.min.js"></script>
+    <script src="js/form-validation/jquery.validate.min.js"></script>
+    <script src="js/form-validation/form-active.js"></script>
+    <!-- dropzone JS
+		============================================ -->
+    <script src="js/dropzone/dropzone.js"></script>
     <!-- tab JS
 		============================================ -->
     <script src="js/tab.js"></script>

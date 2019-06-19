@@ -31,6 +31,9 @@ class Executive(models.Model):
     first_name = models.CharField(max_length=32, blank=True)
     last_name = models.CharField(max_length=32, blank=True)
 
+    email = models.EmailField(blank=True)
+    phone = models.CharField(max_length=13, blank=True)
+
     employee_id = models.CharField(max_length=12, blank=True)
 
     date_of_birth = models.DateField(blank=True, null=True)

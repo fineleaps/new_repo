@@ -9,6 +9,9 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from . import alert_messages
+from results.models import Result
+from django.db.models import Count, Avg, Min, Max, Sum, Q
+from campaigns.models import Campaign
 
 
 @login_required
@@ -29,6 +32,19 @@ def password_change(request):
     })
 
 
+@login_required
+def home(request):
+    campaigns = Campaign.objects.annotate(results=Sum("prospectcampaignrelation__result"),
+                                          leads=Sum("prospectcampaignrelation__result",
+                                                    filter=Q(prospectcampaignrelation__result__result_choice="Lead")),
+                                          views=Sum("prospectcampaignrelation__result",
+                                                    filter=Q(prospectcampaignrelation__result__result_choice="View")),
+                                          dncs=Sum("prospectcampaignrelation__result",
+                                                    filter=Q(prospectcampaignrelation__result__result_choice="DNC")),
+                                          )
+    return render(request, "portal/home.html", {"campaigns": campaigns})
+
+
 class HomeView(LoginRequiredMixin, View):
 
     # def get(self, request):
@@ -38,6 +54,12 @@ class HomeView(LoginRequiredMixin, View):
     #         return render(request, 'portal/home.html')
     def get(self, request):
         return render(request, 'portal/home.html')
+
+    # def get_context_data(self):
+    #     context = super().get_context_data()
+    #     months = "nmdsalkfm"
+    #     context["months"] = months
+    #     return context
 
 
 class ProfileView(LoginRequiredMixin, DetailView):

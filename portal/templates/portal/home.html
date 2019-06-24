@@ -7,6 +7,13 @@
 
 
     <div class="analytics-sparkle-area">
+        <h1>{{ campaigns }}</h1>
+
+        {% for campaign in campaigns %}
+            <h1>{{ campaign.name }} - {{ campaign.results }} - {{ campaign.leads }} - {{ campaign.views }} - {{ campaign.dncs }}</h1>
+        {% endfor %}
+
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">

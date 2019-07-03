@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 
 class Result(models.Model):
 
-    ResultChoices = (('Lead', 'Lead'), ('View', 'View'), ('DNC', 'DNC'))
+    ResultChoices = (('Lead', 'Lead'), ('View', 'View'), ("NR", "No Response"), ('DNC', 'DNC'))
 
     prospect_campaign_relation = models.OneToOneField('campaigns.ProspectCampaignRelation', on_delete=models.CASCADE)
     on = models.DateTimeField(auto_now_add=True)

@@ -8,19 +8,18 @@
 
 <div class="container">
 
+
     <div class="row panel panel-primary " style="margin-top:2%;">
             <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a data-toggle="tab" href="#Summery" class="text-primary"><i class="fa fa-indent"></i> Summery</a></li>
+                                        <li class="active"><a data-toggle="tab" href="#basic_information" class="text-primary"><i class="fa fa-indent"></i> Basic Information</a></li>
                                         <li><a data-toggle="tab" href="#Contact" class="text-primary"><i class="fa fa-bookmark-o"></i> Contact Info</a></li>
-                                        <li><a data-toggle="tab" href="#Address" class="text-primary"><i class="fa fa-home"></i> Address</a></li>
-                                        <li><a data-toggle="tab" href="#General" class="text-primary"><i class="fa fa-info"></i> General Info</a></li>
                                     </ul>
 
                                     <div class="tab-content">
-                                        <div id="Summery" class="tab-pane fade in active">
+                                        <div id="basic_information" class="tab-pane fade in active">
 
                                             <div class="table-responsive panel">
                                                 <table class="table">
@@ -89,27 +88,67 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </div>
 
-                                        <div id="Address" class="tab-pane fade">
-                                            <div class="table-responsive panel">
-                                                <table class="table">
-                                                    <tbody>
+                                            <div class="panel">
+                                                <h4 class="text-center">Add Response</h4>
+                                                <form method="post" action="{% url 'results:result_add' campaign_slug=campaign.slug prospect_id=prospect.id %}">
+                                                    {% csrf_token %}
+                                                    <div class="form-group-inner">
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                                <label class="login2 pull-left pull-left-pro">Select Result Response</label>
+                                                            </div>
+                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                                                <div class="bt-df-checkbox pull-left">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                            <div class="i-checks pull-left">
+                                                                                <label>
+                                                                                        <input name="result_choice" type="radio" checked value="View"> <i></i>View</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                            <div class="i-checks pull-left">
+                                                                                <label>
+                                                                                        <input name="result_choice" type="radio" value="Lead"> <i></i>Lead</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                            <div class="i-checks pull-left">
+                                                                                <label>
+                                                                                        <input name="result_choice" type="radio" value="NR"> <i></i>No Response</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                            <div class="i-checks pull-left">
+                                                                                <label>
+                                                                                    <input name="result_choice" type="radio" value="DNC" > <i></i> <span class="basic-ds-n">DNC</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="result_details">Add Message</label>
+                                                        <div class="form-">
+                                                            <textarea id="result_details" name="result_details"></textarea>
+                                                        </div>
+                                                    </div>
 
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-home"></i> Address</td>
-                                                                <td>
-                                                                    <address>
-                                                                        <strong>
-        C-***, Amahiya </strong><br>
-        Kharobar, ****** <br>
-        Gorakhpur, Utter Pradesh, India<br>
-                                                                    </address>
-                                                                </td>
-                                                            </tr>
-                                                            </tbody>
-                                                </table>
+                                                    <input class="btn btn-primary" type="submit" value="Submit">
+
+
+                                                </form>
                                             </div>
+
                                         </div>
                                         <div id="Contact" class="tab-pane fade">
                                             <div class="table-responsive panel">
@@ -157,44 +196,6 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        <div id="General" class="tab-pane fade">
-                                            <div class="table-responsive panel">
-                                                <table class="table">
-                                                    <tbody>
-                                                                <tr>
-                                                                <td class="text-primary"><i class="fa fa-university"></i> Last School</td>
-                                                                <td>Pawan Mall's School</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-calendar"></i> Date of Admission</td>
-                                                                <td>March 4, 2009</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-home"></i> Birth Place</td>
-                                                                <td>Delhi</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-calendar"></i> Academic Year</td>
-                                                                <td>2015-2016</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-medkit"></i> Medical Condition</td>
-                                                                <td>Normal</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-thumbs-up"></i> Active/Inactive</td>
-                                                                <td>Student is Active</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="glyphicon glyphicon-time"></i> Last Editing</td>
-                                                                <td>2015-08-20 09:41:56</td>
-                                                            </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-
                                     </div>
                         </div>
                     </div>
@@ -202,248 +203,5 @@
 
             </div>
         </div>
-
-
-
-
-
 </div>
-
-
-
-
-
-
-    <div class="text-center container">
-        {% if prospect %}
-
-            <h3>{{ prospect.full_name }}</h3>
-
-            <br><br><br>
-
-            <table class="table table-stripped table-bordered">
-
-                <tr>
-                    <td>first name</td>
-                    <td>{{ prospect.first_name }}</td>
-                </tr>
-                <tr>
-                    <td>last name</td>
-                    <td>{{ prospect.last_name }}</td>
-                </tr>
-                <tr>
-                    <td>Industry</td>
-                    <td>{{ prospect.get_industry }}</td>
-                </tr>
-
-            </table>
-
-            <form method="post" action="{% url 'results:result_add' campaign_slug=campaign.slug prospect_id=prospect.id %}">
-                {% csrf_token %}
-                <select name="result_choice">
-                    <option value="Lead">Lead</option>
-                    <option value="View">View</option>
-                    <option value="DNC">DNC</option>
-                </select>
-                <input name="details">
-
-                <button class="btn btn-primary" type="submit">Save</button>
-            </form>
-
-
-        {% else %}
-
-            <span class="alert alert-warning">No more prospect</span>
-
-        {% endif %}
-
-    </div>
 {% endblock %}
-
-
-
-{#{% extends "portal/base.html" %}#}
-{#{% load static %}#}
-{##}
-{#{% block title %}Campaigns{% endblock %}#}
-{##}
-{#{% block content %}#}
-{##}
-{#    {% if prospect %}#}
-{#        <h1>{{ prospect.first_name }}</h1>#}
-{#    {% else %}#}
-{#        <span class="alert alert-info">No more prospect</span>#}
-{#    {% endif %}#}
-{##}
-{#    <br><br><br><br>#}
-{##}
-{#    <div class="single-pro-review-area mt-t-30 mg-b-15">#}
-{#            <div class="container-fluid">#}
-{#                <div class="row">#}
-{#                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">#}
-{#                        <div class="profile-info-inner">#}
-{#                            <div class="profile-img">#}
-{#                                <img src="{% static "img/crm/campaign.jpg"%}" alt="" />#}
-{#                            </div>#}
-{#                            <h3 class="mg-t-15">{{ campaign.get_display_text }}</h3>#}
-{#                            <div class="course-des">#}
-{#                                <h5 class="mg-t-15">Leads: 6 Months</h5>#}
-{#                                <h5 class="mg-t-15">Views: Jane Doe</h5>#}
-{#                                <h5 class="mg-t-15">DNC: 100+</h5>#}
-{#                            </div>#}
-{##}
-{#                            <a href="#"><button class="btn btn-primary btn-block">Get Prospect</button></a>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">#}
-{#                        <div class="product-payment-inner-st res-mg-t-30 analysis-progrebar-ctn">#}
-{#                            <ul id="myTabedu1" class="tab-review-design">#}
-{#                                <li class="active"><a href="#description">Activity</a></li>#}
-{#                            </ul>#}
-{#                            <div id="myTabContent" class="tab-content custom-product-edit">#}
-{#                                <div class="product-tab-list tab-pane fade active in" id="description">#}
-{#                                    <div class="row">#}
-{#                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">#}
-{#                                            <div class="review-content-section">#}
-{#                                                <div class="chat-discussion" style="height: auto">#}
-{#                                                    <div class="chat-message">#}
-{#														<div class="profile-hdtc">#}
-{#															 <img class="message-avatar" src="img/contact/1.jpg" alt="">#}
-{#														</div>#}
-{#                                                        <div class="message">#}
-{#                                                            <a class="message-author" href="#"> Michael Smith </a>#}
-{#                                                            <span class="message-date"> Mon Jan 26 2015 - 18:39:23 </span>#}
-{#                                                            <span class="message-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.#}
-{#															</span>#}
-{#                                                            <div class="m-t-md mg-t-10">#}
-{#                                                                <a class="btn btn-xs btn-default"><i class="fa fa-thumbs-up"></i> Like </a>#}
-{#                                                                <a class="btn btn-xs btn-success"><i class="fa fa-heart"></i> Love</a>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                    <div class="chat-message">#}
-{#														<div class="profile-hdtc">#}
-{#															 <img class="message-avatar" src="img/contact/2.jpg" alt="">#}
-{#														</div>#}
-{#                                                        <div class="message">#}
-{#                                                            <a class="message-author" href="#"> Karl Jordan </a>#}
-{#                                                            <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>#}
-{#                                                            <span class="message-content">#}
-{#																	Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover.#}
-{#																	</span>#}
-{#                                                            <div class="m-t-md mg-t-10">#}
-{#                                                                <a class="btn btn-xs btn-default"><i class="fa fa-thumbs-up"></i> Like </a>#}
-{#                                                                <a class="btn btn-xs btn-default"><i class="fa fa-heart"></i> Love</a>#}
-{#                                                                <a class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Message</a>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                    <div class="chat-message">#}
-{#														<div class="profile-hdtc">#}
-{#															 <img class="message-avatar" src="img/contact/3.jpg" alt="">#}
-{#														</div>#}
-{#                                                        <div class="message">#}
-{#                                                            <a class="message-author" href="#"> Michael Smith </a>#}
-{#                                                            <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>#}
-{#                                                            <span class="message-content">#}
-{#																	There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.#}
-{#																	</span>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                    <div class="chat-message">#}
-{#														<div class="profile-hdtc">#}
-{#															 <img class="message-avatar" src="img/contact/4.jpg" alt="">#}
-{#														</div>#}
-{#                                                        <div class="message">#}
-{#                                                            <a class="message-author" href="#"> Alice Jordan </a>#}
-{#                                                            <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>#}
-{#                                                            <span class="message-content">#}
-{#																	All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.#}
-{#																		It uses a dictionary of over 200 Latin words.#}
-{#																	</span>#}
-{#                                                            <div class="m-t-md mg-t-10">#}
-{#                                                                <a class="btn btn-xs btn-default"><i class="fa fa-thumbs-up"></i> Like </a>#}
-{#                                                                <a class="btn btn-xs btn-warning"><i class="fa fa-eye"></i> Nudge</a>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                    <div class="chat-message">#}
-{#														<div class="profile-hdtc">#}
-{#															 <img class="message-avatar" src="img/contact/1.jpg" alt="">#}
-{#														</div>#}
-{#                                                        <div class="message">#}
-{#                                                            <a class="message-author" href="#"> Mark Smith </a>#}
-{#                                                            <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>#}
-{#                                                            <span class="message-content">#}
-{#																	All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.#}
-{#																		It uses a dictionary of over 200 Latin words.#}
-{#																	</span>#}
-{#                                                            <div class="m-t-md mg-t-10">#}
-{#                                                                <a class="btn btn-xs btn-default"><i class="fa fa-thumbs-up"></i> Like </a>#}
-{#                                                                <a class="btn btn-xs btn-success"><i class="fa fa-heart"></i> Love</a>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                    <div class="chat-message">#}
-{#														<div class="profile-hdtc">#}
-{#															 <img class="message-avatar" src="img/contact/2.jpg" alt="">#}
-{#														</div>#}
-{#                                                        <div class="message">#}
-{#                                                            <a class="message-author" href="#"> Karl Jordan </a>#}
-{#                                                            <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>#}
-{#                                                            <span class="message-content">#}
-{#																	Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover.#}
-{#																	</span>#}
-{#                                                            <div class="m-t-md mg-t-10">#}
-{#                                                                <a class="btn btn-xs btn-default"><i class="fa fa-thumbs-up"></i> Like </a>#}
-{#                                                                <a class="btn btn-xs btn-default"><i class="fa fa-heart"></i> Love</a>#}
-{#                                                                <a class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Message</a>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                    <div class="chat-message">#}
-{#														<div class="profile-hdtc">#}
-{#															 <img class="message-avatar" src="img/contact/3.jpg" alt="">#}
-{#														</div>#}
-{#                                                        <div class="message">#}
-{#                                                            <a class="message-author" href="#"> Michael Smith </a>#}
-{#                                                            <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>#}
-{#                                                            <span class="message-content">#}
-{#																	There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.#}
-{#																	</span>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                    <div class="chat-message">#}
-{#														<div class="profile-hdtc">#}
-{#															 <img class="message-avatar" src="img/contact/4.jpg" alt="">#}
-{#														</div>#}
-{#                                                        <div class="message">#}
-{#                                                            <a class="message-author" href="#"> Alice Jordan </a>#}
-{#                                                            <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>#}
-{#                                                            <span class="message-content">#}
-{#																	All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.#}
-{#																		It uses a dictionary of over 200 Latin words.#}
-{#																	</span>#}
-{#                                                            <div class="m-t-md mg-t-10">#}
-{#                                                                <a class="btn btn-xs btn-default"><i class="fa fa-thumbs-up"></i> Like </a>#}
-{#                                                                <a class="btn btn-xs btn-default"><i class="fa fa-heart"></i> Love</a>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{##}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{##}
-{#{% endblock %}#}
-{##}
-{##}
-{##}

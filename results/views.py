@@ -58,7 +58,7 @@ def result_add(request, campaign_slug, prospect_id):
         Result.objects.create(prospect_campaign_relation=pcr,
                                      result_choice=post_dict.get('result_choice'),
                                      by=request.user.executive,
-                                     details=post_dict.get('details'))
+                                     details=post_dict.get('result_details'))
         return redirect('campaigns:prospect_get', slug=pcr.campaign.slug)
     return redirect('campaigns:prospect_get', slug=campaign_slug)
 

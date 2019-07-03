@@ -24,7 +24,7 @@ class Campaign(models.Model):
         if self.aim:
             return self.aim
         else:
-            return "Aim not set."
+            return "--"
 
     @property
     def get_short_form(self):

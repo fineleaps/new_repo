@@ -1,38 +1,61 @@
 {% extends "portal/base.html" %}
+{% load result_tags %}
 {% load static %}
 {% block title %}Campaigns{% endblock %}
-
 {% block content %}
-
-
-    <div class="contacts-area mg-b-15">
+        <div class="product-status mg-b-15">
             <div class="container-fluid">
-                {%  if campaigns %}
-                    <div class="row">
-                        {% for campaign in campaigns %}
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                <div class="bg-primary panel-heading text-center">
-                                    <h3 style="color: white!important;">{{ campaign.get_short_form }}</h3>
-                                </div>
-                                <div class="hpanel hblue contact-panel contact-panel-cs responsive-mg-b-30">
-                                    <div class="panel-body custom-panel-jw">
-                                        <p class="all-pro-ad">Campaign other name/slogun etc</p>
-                                        <p>{{ campaign.details }}</p>
-                                    </div>
-                                    <div class="course-des">
-                                        <p><span><i class="fa fa-clock"></i></span> <b>Leads:</b> 6 Months</p>
-                                        <p><span><i class="fa fa-clock"></i></span> <b>Views:</b> Jane Doe</p>
-                                        <p><span><i class="fa fa-clock"></i></span> <b>DNC:</b> 100+</p>
-                                    </div>
-                                        <a href="{% url "campaigns:detail" slug=campaign.slug %}"><button class="btn btn-primary waves-effect waves-light btn-block">Goto Camapign</button> </a>
-                                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="product-status-wrap drp-lst">
+                            <h4>Campaigns List</h4>
+                            <div class="add-product">
+                                <a href="add-department.html">Add Query</a>
                             </div>
-                        {% endfor %}
+                            <div class="asset-inner">
+                                {% if campaigns %}
+                                    <table>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Name</th>
+                                            <th>Status</th>
+                                            <th>Start</th>
+                                            <th>End</th>
+                                            <th>Leads</th>
+                                            <th>Views</th>
+                                            <th>DNCS</th>
+                                            <th>Action</th>
+                                        </tr>
+
+                                        {% for campaign in campaigns %}
+
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ campaign.get_display_text }}</td>
+                                                <td>
+                                                    <button class="pd-setting">{{ campaign.is_active }}</button>
+                                                </td>
+                                                <td>{{ campaign.start_date }}</td>
+                                                <td>{{ campaign.end_date }}</td>
+                                                <td>{% get_leads_by_campaign campaign_id=campaign.id executive_id=user.executive.id %}</td>
+                                                <td>{% get_views_by_campaign campaign_id=campaign.id executive_id=user.executive.id %}</td>
+                                                <td>{% get_dncs_by_campaign campaign_id=campaign.id executive_id=user.executive.id %}</td>
+                                                <td>
+                                                    <a href="{% url "campaigns:detail" slug=campaign.slug %}">
+                                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                {% else %}
+                                    <h4>No Campaigns Yet</h4>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
-                {% else %}
-                        <span class="alert alert-warning " >No Campaigns</span>
-                {% endif %}
+                </div>
             </div>
         </div>
-
+    </div>
 {% endblock %}

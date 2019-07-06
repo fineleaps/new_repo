@@ -39,13 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_filters',
+    'widget_tweaks',
+    'crispy_forms',
 
     'crm_admin',
     'portal',
     'prospects',
     'campaigns',
     'results',
-    'crispy_forms',
 
 
 ]

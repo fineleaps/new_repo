@@ -5,17 +5,8 @@ from django_filters import widgets
 
 
 class ResultFilter(django_filters.FilterSet):
-
-    # by = django_filters.Cho.
-    # date_range = django_filters.DateFromToRangeFilter(field_name="on", lookup_expr="date__in",
-    #                                                   widget=widgets.DateRangeWidget(attrs={"id": "jqueryDateRangePicker "}))
-    #
-    on = django_filters.DateFilter(widget=forms.DateInput(attrs={"id": "jqueryDatePicker"}))
-
     d_range = django_filters.DateRangeFilter(field_name="on", label="date")
-
-    date_range = django_filters.DateFromToRangeFilter(field_name="on", lookup_expr="date__in",
-                                                      widget=widgets.DateRangeWidget())
+    date_range = django_filters.DateFromToRangeFilter(field_name="on", lookup_expr="date__in")
 
     class Meta:
         model = Result

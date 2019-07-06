@@ -9,13 +9,18 @@
 <div class="container">
 
 
+
+
+
+
     <div class="row panel panel-primary " style="margin-top:2%;">
             <div class="panel-body">
+                {% if prospect %}
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                                     <ul class="nav nav-tabs">
                                         <li class="active"><a data-toggle="tab" href="#basic_information" class="text-primary"><i class="fa fa-indent"></i> Basic Information</a></li>
-                                        <li><a data-toggle="tab" href="#Contact" class="text-primary"><i class="fa fa-bookmark-o"></i> Contact Info</a></li>
+                                        <li><a data-toggle="tab" href="#script" class="text-primary"><i class="fa fa-bookmark-o"></i> Script</a></li>
                                     </ul>
 
                                     <div class="tab-content">
@@ -78,10 +83,6 @@
                                                                 <td>{{ prospect.country }}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="text-primary"><i class="fa fa-group"></i> State</td>
-                                                                <td>{{ prospect.state }}</td>
-                                                            </tr>
-                                                            <tr>
                                                                 <td class="text-primary"><i class="fa fa-list-ol"></i> Details</td>
                                                                 <td>{{ prospect.details }}</td>
                                                             </tr>
@@ -89,11 +90,12 @@
                                                 </table>
                                             </div>
 
-                                            <div class="panel">
-                                                <h4 class="text-center">Add Response</h4>
-                                                <form method="post" action="{% url 'results:result_add' campaign_slug=campaign.slug prospect_id=prospect.id %}">
+                                            <div class="panel text-muted">
+                                                <div class="">
+                                                    <h4 class="text-center">Add Response</h4>
+                                                    <form method="post" action="{% url 'results:result_add' campaign_slug=campaign.slug prospect_id=prospect.id %}">
                                                     {% csrf_token %}
-                                                    <div class="form-group-inner">
+                                                    <div class="form-group col-lg-6">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                                                 <label class="login2 pull-left pull-left-pro">Select Result Response</label>
@@ -128,7 +130,7 @@
                                                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                             <div class="i-checks pull-left">
                                                                                 <label>
-                                                                                    <input name="result_choice" type="radio" value="DNC" > <i></i> <span class="basic-ds-n">DNC</label>
+                                                                                    <input name="result_choice" type="radio" value="DNC" > <i></i> <span class="basic-ds-n">DNC</span></label>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -136,71 +138,31 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div class="form-group col-lg-6">
                                                         <label for="result_details">Add Message</label>
                                                         <div class="form-">
                                                             <textarea id="result_details" name="result_details"></textarea>
                                                         </div>
                                                     </div>
-
-                                                    <input class="btn btn-primary" type="submit" value="Submit">
-
-
+                                                    <div class="text-center">
+                                                        <input class="btn btn-primary" type="submit" value="Submit">
+                                                    </div>
                                                 </form>
+                                                </div>
                                             </div>
-
                                         </div>
-                                        <div id="Contact" class="tab-pane fade">
+                                        <div id="script" class="tab-pane fade">
                                             <div class="table-responsive panel">
-                                                <table class="table">
-                                                    <tbody>
-
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-envelope-o"></i> Email ID</td>
-                                                                <td><a href="mailto:****@pawanmall.net?subject=Email from &amp;body=Hello, Viddhyut Mall">****@pawanmall.net</a></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="glyphicon glyphicon-phone"></i> Mobile Number</td>
-                                                                <td>88********</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-flag"></i> Nationality</td>
-                                                                <td>Indian</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-user"></i> Father's Name</td>
-                                                                <td>Ajay Mall</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="glyphicon glyphicon-phone"></i> Father's Mobile</td>
-                                                                <td>+91 99********</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-user"></i> Mother's Name</td>
-                                                                <td>Hemlata Mall</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="glyphicon glyphicon-phone"></i> Mother's Mobile</td>
-                                                                <td>+91 90********</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-user"></i> Emergency Contact Person</td>
-                                                                <td>Pawan Mall</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="glyphicon glyphicon-phone"></i> Emergency Contact Person's Mobile</td>
-                                                                <td>+91 88********</td>
-                                                            </tr>
-
-                                                    </tbody>
-                                                </table>
+                                                <br><br>
+                                                <p><span class="text-primary"><b>Script : </b></span> {{ campaign.script }}</p>
                                             </div>
                                         </div>
                                     </div>
                         </div>
                     </div>
-                <!-- /.table-responsive -->
-
+                {% else %}
+                    <span class="alert alert-warning">No more prospects</span>
+                {% endif %}
             </div>
         </div>
 </div>

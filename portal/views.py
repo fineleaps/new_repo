@@ -47,13 +47,11 @@ def home(request):
 
 class HomeView(LoginRequiredMixin, View):
 
-    # def get(self, request):
-    #     if request.user.is_superuser:
-    #         return redirect('crm_admin:home')
-    #     else:
-    #         return render(request, 'portal/home.html')
     def get(self, request):
-        return render(request, 'portal/home.html')
+        if request.user.is_superuser:
+            return redirect('crm_admin:home')
+        else:
+            return render(request, 'portal/home.html')
 
     # def get_context_data(self):
     #     context = super().get_context_data()

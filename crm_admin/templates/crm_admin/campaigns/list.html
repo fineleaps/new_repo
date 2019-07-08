@@ -10,7 +10,7 @@
                         <div class="product-status-wrap drp-lst">
                             <h4>Campaigns List</h4>
                             <div class="add-product">
-                                <a href="add-department.html">Add Query</a>
+                                <a href="{% url "crm_admin:campaign_add" %}">Add Campaign</a>
                             </div>
                             <div class="asset-inner">
                                 {% if campaigns %}
@@ -37,12 +37,12 @@
                                                 </td>
                                                 <td>{{ campaign.start_date }}</td>
                                                 <td>{{ campaign.end_date }}</td>
-                                                <td>{% get_leads_by_campaign campaign_id=campaign.id executive_id=user.executive.id %}</td>
-                                                <td>{% get_views_by_campaign campaign_id=campaign.id executive_id=user.executive.id %}</td>
-                                                <td>{% get_dncs_by_campaign campaign_id=campaign.id executive_id=user.executive.id %}</td>
+                                                <td>{{ campaign.get_all_leads.count }}</td>
+                                                <td>{{ campaign.get_all_views.count }}</td>
+                                                <td>{{ campaign.get_all_dncs.count }}</td>
                                                 <td>
-                                                    <a href="{{ campaign.get_absolute_url }}">
-                                                        <button data-toggle="tooltip" title="Go" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                                    <a href="{{ campaign.get_admin_update_url }}">
+                                                        <button data-toggle="tooltip" title="Update" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                                     </a>
                                                 </td>
                                             </tr>

@@ -5,8 +5,10 @@ from django_filters import widgets
 
 
 class ResultFilter(django_filters.FilterSet):
-    d_range = django_filters.DateRangeFilter(field_name="on", label="date")
+    on = django_filters.DateFilter(field_name="on__date", label="by date")
+    d_range = django_filters.DateRangeFilter(field_name="on", label="By Duration")
     date_range = django_filters.DateFromToRangeFilter(field_name="on", lookup_expr="date__in")
+    # prospect_campaign_relation__campaign = django_filters.ModelChoiceFilter(label="")
 
     class Meta:
         model = Result

@@ -2,6 +2,8 @@ from django.db import models
 from django.db.models.signals import post_save, pre_save
 from django.utils.text import slugify
 from django.http import HttpResponse
+from results.models import Result
+from django.urls import reverse_lazy
 
 
 class Campaign(models.Model):
@@ -33,10 +35,19 @@ class Campaign(models.Model):
     @property
     def get_display_text(self):
         return self.name
-    #
-    # @property
-    # def get_absolute_url(self):
-    #
+
+    @property
+    def get_admin_absolute_url(self):
+        return reverse_lazy("crm_admin:campaign_detail", kwargs={'slug': self.slug})
+
+    @property
+    def get_admin_update_url(self):
+        return reverse_lazy("crm_admin:campaign_update", kwargs={'slug': self.slug})
+
+    @property
+    def get_absolute_url(self):
+        return reverse_lazy("portal:campaign_detail", kwargs={'slug': self.slug})
+
 
     @property
     def prospects_attempted(self):
@@ -54,6 +65,18 @@ class Campaign(models.Model):
             return f_prospect
         else:
             return False
+
+    @property
+    def get_all_leads(self):
+        return Result.objects.filter(prospect_campaign_relation__campaign=self, result_choice="Lead")
+
+    @property
+    def get_all_views(self):
+        return Result.objects.filter(prospect_campaign_relation__campaign=self, result_choice="View")
+
+    @property
+    def get_all_dncs(self):
+        return Result.objects.filter(prospect_campaign_relation__campaign=self, result_choice="DNC")
 
 
 def assign_slug(sender, instance, *args, **kwargs):

@@ -4,9 +4,12 @@ from django.utils.text import slugify
 from django.http import HttpResponse
 from results.models import Result
 from django.urls import reverse_lazy
+from clients.models import Client
 
 
 class Campaign(models.Model):
+
+    client = models.ForeignKey(Client, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=64)
     aim = models.CharField(max_length=128, blank=True)
     slug = models.SlugField(blank=True)
@@ -18,8 +21,26 @@ class Campaign(models.Model):
     executives = models.ManyToManyField('portal.Executive', blank=True)
     prospects = models.ManyToManyField('prospects.Prospect', blank=True, through='ProspectCampaignRelation')
 
+    added_on = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return self.name
+
+    @property
+    def get_active_status(self):
+        return "Active" if self.is_active else "Not Active"
+
+    @property
+    def get_executives(self):
+        return self.executives.all()
+
+    @property
+    def get_client(self):
+        return self.client
+
+    @property
+    def get_client_display_text(self):
+        return self.client.get_display_text
 
     @property
     def get_aim(self):
@@ -43,6 +64,10 @@ class Campaign(models.Model):
     @property
     def get_admin_update_url(self):
         return reverse_lazy("crm_admin:campaign_update", kwargs={'slug': self.slug})
+
+    @property
+    def get_admin_delete_url(self):
+        return reverse_lazy("crm_admin:campaign_delete", kwargs={'slug': self.slug})
 
     @property
     def get_absolute_url(self):

@@ -1,7 +1,7 @@
 {% extends "crm_admin/base.html" %}
 {% load result_tags %}
 {% load static %}
-{% block title %}Campaigns{% endblock %}
+{% block title %}Client{% endblock %}
 
 {% block content %}
             <div class="data-table-area mg-b-15">
@@ -11,9 +11,9 @@
                         <div class="sparkline13-list">
                             <div class="sparkline13-hd">
                                 <div class="main-sparkline13-hd">
-                                    <h1>Campaigns List</h1>
+                                    <h1>Client List</h1>
                                     <div class="add-product">
-                                        <a href="{% url "crm_admin:campaign_add" %}">Add Campaign</a>
+                                        <a href="{% url "crm_admin:client_add" %}">Add Client</a>
                                     </div>
                                 </div>
 
@@ -32,33 +32,31 @@
                                         <thead>
                                             <tr>
                                                 <th data-field="state" data-checkbox="true"></th>
-                                                <th data-field="id">SR</th>
+                                                <th data-field="id">No</th>
                                                 <th data-field="name" data-editable="true">Name</th>
-                                                <th data-field="executives" data-editable="true">Executives</th>
-                                                <th data-field="email" data-editable="true">Status</th>
-                                                <th data-field="phone" data-editable="true">Start Date</th>
-                                                <th data-field="complete">End Date</th>
-                                                <th data-field="task" data-editable="true">Leads</th>
-                                                <th data-field="date" data-editable="true">Views</th>
-                                                <th data-field="price" data-editable="true">DNCS</th>
+                                                <th data-field="executives" data-editable="true">Email</th>
+                                                <th data-field="email" data-editable="true">Campaigns</th>
+                                                <th data-field="phone" data-editable="true">Company</th>
+                                                <th data-field="complete">Industry Type</th>
+                                                <th data-field="task" data-editable="true">Emp Size</th>
+                                                <th data-field="city" data-editable="true">City</th>
                                                 <th data-field="action">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-                                            {% for campaign in campaigns %}
+                                            {% for client in clients %}
                                                 <tr>
                                                     <td></td>
                                                     <td>{{ forloop.counter }}</td>
-                                                    <td>{{ campaign.get_display_text }}</td>
-                                                    <td>{{ campaign.get_executives.count }}</td>
-                                                    <td>{{ campaign.get_active_status }}</td>
-                                                    <td>{{ campaign.start_date }}</td>
-                                                    <td class="datatable-ct"><span class="pie">{{ campaign.end_date }}</span></td>
-                                                    <td>{{ campaign.get_all_leads.count }}</td>
-                                                    <td>{{ campaign.get_all_views.count }}</td>
-                                                    <td>{{ campaign.get_all_dncs.count }}</td>
-                                                    <td class="datatable-ct"><a href="{{ campaign.get_admin_update_url }}"><i class="fa fa-eye"></i></a></td>
+                                                    <td>{{ client.get_display_text }}</td>
+                                                    <td>{{ client.email }}</td>
+                                                    <td>{{ client.get_campaigns.count }}</td>
+                                                    <td>{{ client.company }}</td>
+                                                    <td>{{ client.industry_type }}</td>
+                                                    <td>{{ client.emp_size }}</td>
+                                                    <td>{{ client.city }}</td>
+                                                    <td class="datatable-ct"><a href="{{ client.get_admin_update_url }}"><i class="fa fa-eye"></i></a></td>
                                                 </tr>
                                             {% endfor %}
                                         </tbody>

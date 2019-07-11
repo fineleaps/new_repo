@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'prospects',
     'campaigns',
     'results',
+    'clients',
 
 
 ]

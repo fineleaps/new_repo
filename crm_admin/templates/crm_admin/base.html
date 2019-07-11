@@ -70,9 +70,23 @@
     <link rel="stylesheet" href="{% static "css/form/all-type-forms.css" %}">
     <link rel="stylesheet" href="{% static "css/datapicker/datepicker3.css" %}">
 
+
+
+    <link rel="stylesheet" href="{% static "css/editor/select2.css" %}">
+    <link rel="stylesheet" href="{% static "css/editor/datetimepicker.css" %}">
+    <link rel="stylesheet" href="{% static "css/editor/bootstrap-editable.css" %}">
+    <link rel="stylesheet" href="{% static "css/editor/x-editor-style.css" %}">
+
+
+    <link rel="stylesheet" href="{% static "css/data-table/bootstrap-table.css" %}">
+    <link rel="stylesheet" href="{% static "css/data-table/bootstrap-editable.css" %}">
+
     <!-- modernizr JS
 		============================================ -->
     <script src="{% static "js/vendor/modernizr-2.8.3.min.js" %}"></script>
+
+    {% block extra_links %}
+    {% endblock %}
 
 </head>
 
@@ -85,35 +99,42 @@
 {#        {% endfor %}#}
 {#    {% endif %}#}
 
-    <!-- Start Left menu area -->
     {% include "crm_admin/left_menu.html" %}
-    <!-- End Left menu area -->
 
-    <!-- Start Welcome area -->
     <div class="all-content-wrapper">
-        <!-- Start Header -->
         {% include "crm_admin/header.html" %}
-        <!-- End Header -->
 
         {% block content %}
 
         {% endblock %}
 
-        <!-- Start Footer -->
         {% include "portal/footer.html" %}
-        <!-- End Footer -->
 
     </div>
-{##}
-{#        <script>#}
-{#            $("#jqueryDatePicker").datepicker();#}
-{#        </script>#}
 
 
     <!-- Start Scripts -->
 
-    <!-- jquery
-		============================================ -->
+    <!-- jquery============================================ -->
+
+    {% block extra_scripts %}
+    {% endblock %}
+    <script>
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+          dd = '0' + dd;
+        }
+        if (mm < 10) {
+          mm = '0' + mm;
+        }
+        var date = dd + '/' + mm + '/' + yyyy;
+        var fileName="Campaigns_list_" + date;
+    </script>
+
     <script src="{% static "js/vendor/jquery-1.12.4.min.js" %}"></script>
     <!-- bootstrap JS
 		============================================ -->
@@ -184,6 +205,21 @@
     <script src="{% static "js/datapicker/bootstrap-datepicker.js" %}"></script>
     <script src="{% static "js/datapicker/datepicker-active.js" %}"></script>
 
+    <script src="{% static "js/data-table/bootstrap-table.js" %}"></script>
+    <script src="{% static "js/data-table/tableExport.js" %}"></script>
+    <script src="{% static "js/data-table/data-table-active.js" %}"></script>
+    <script src="{% static "js/data-table/bootstrap-table-editable.js" %}"></script>
+    <script src="{% static "js/data-table/bootstrap-editable.js" %}"></script>
+    <script src="{% static "js/data-table/bootstrap-table-resizable.js" %}"></script>
+    <script src="{% static "js/data-table/colResizable-1.5.source.js" %}"></script>
+    <script src="{% static "js/data-table/bootstrap-table-export.js" %}"></script>
+    <script src="{% static "js/editable/jquery.mockjax.js" %}"></script>
+    <script src="{% static "js/editable/mock-active.js" %}"></script>
+    <script src="{% static "js/editable/select2.js" %}"></script>
+    <script src="{% static "js/editable/moment.min.js" %}"></script>
+    <script src="{% static "js/editable/bootstrap-datetimepicker.js" %}"></script>
+    <script src="{% static "js/editable/bootstrap-editable.js" %}"></script>
+    <script src="{% static "js/editable/xediable-active.js" %}"></script>
 
 
 </body>

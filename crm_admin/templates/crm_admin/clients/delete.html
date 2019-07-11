@@ -6,11 +6,11 @@
 
     <div class="container">
         <form method="post">
-            {% if campaign.is_active %}
-                <span class="alert alert-danger btn-block">Campaign is Active</span>
+            {% if client.get_active_campaigns %}
+                <span class="alert alert-danger btn-block">Client have Active Campaigns</span>
             {% endif %}
-            <h3>{{ campaign.get_display_text }}</h3>
-            <h4>Make sure your really wants to delete this Campaign</h4>
+            <h3>{{ client.get_display_text }}</h3>
+            <h4>Make sure your really wants to delete this Client</h4>
             {% csrf_token %}
             {{ form|crispy }}
             <input type="submit" class="btn btn-danger" value="Delete">

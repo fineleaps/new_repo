@@ -80,6 +80,7 @@ class CampaignAddView(LoginRequiredMixin, CreateView):
     #     return campaign.get_admin_update_url
 
     def form_valid(self, form):
+        print(555)
         messages.success(self.request, alert_messages.CAMPAIGN_ADDED_MESSAGE)
         return super().form_valid(form)
 

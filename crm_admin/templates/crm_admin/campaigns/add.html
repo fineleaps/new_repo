@@ -25,34 +25,52 @@
 
                                                         {% csrf_token %}
 
-{#                                                        <div class="row">#}
+                                                        {{ form.name|as_crispy_field }}
+                                                        {{ form.aim|as_crispy_field }}
+
+                                                        <div class="row">
+
+                                                            <div class="form-group col-lg-6">
+                                                                {{ form.client|as_crispy_field }}
+                                                            </div>
 {##}
-{#                                                            <div class="form-group col-lg-6">#}
-{#                                                                {{ form.first_name|as_crispy_field }}#}
+{#                                                            <div class="form-group colg-lg-6">#}
+{#                                                                <div class="i-checks pull-left">#}
+{#                                                                    <label>#}
+{#                                                                        <input name="is_active" type="checkbox"> <i></i> Option one </label>#}
+{#                                                                </div>#}
 {#                                                            </div>#}
-{##}
-{#                                                            <div class="form-group col-lg-6">#}
-{#                                                                {{ form.last_name|as_crispy_field }}#}
-{#                                                            </div>#}
-{##}
-{#                                                            <div class="form-group col-lg-6">#}
-{#                                                                {{ form.phone|as_crispy_field }}#}
-{#                                                            </div>#}
-{##}
-{#                                                            <div class="form-group col-lg-6">#}
-{#                                                                {{ form.email|as_crispy_field }}#}
-{#                                                            </div>#}
-{##}
-{#                                                            <div class="form-group col-lg-6">#}
-{#                                                                {{ form.employee_id|as_crispy_field }}#}
-{#                                                            </div>#}
-{##}
-{#                                                            <div class="form-group col-lg-6">#}
-{#                                                                {{ form.date_of_birth|as_crispy_field }}#}
-{#                                                            </div>#}
-{##}
-{#                                                        </div>#}
-                                                        {{ form|crispy }}
+
+                                                            <div class="form-group col-lg-6">
+                                                                <br>
+                                                                <label>Active Status</label>
+                                                                <br>
+                                                                <div class="i-checks pull-left">
+                                                                    <label>
+                                                                        <input name="is_active" type="checkbox">
+                                                                        <i></i> Keep Active </label>
+                                                            </div>                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-lg-6 data-custon-pick" id="data_2">
+                                                                <label>End Date</label>
+                                                                <div class="input-group date">
+                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                    <input name="start_date" type="text" class="form-control" value="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-lg-6 data-custon-pick" id="data_2">
+                                                                <label>End Date</label>
+                                                                <div class="input-group date">
+                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                    <input name="end_date" type="text" class="form-control" value=" ">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {{ form.script|as_crispy_field }}
+                                                        {{ form.details|as_crispy_field }}
+                                                        {{ form.executives|as_crispy_field }}
+
 
                                                         <div class="row">
                                                             <div class="col-lg-12">

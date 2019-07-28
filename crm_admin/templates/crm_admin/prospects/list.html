@@ -1,0 +1,75 @@
+{% extends "crm_admin/base.html" %}
+{% load result_tags %}
+{% load static %}
+{% block title %}Prospect{% endblock %}
+
+{% block content %}
+
+
+
+            <div class="data-table-area mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="sparkline13-list">
+                            <div class="sparkline13-hd">
+                                <div class="main-sparkline13-hd">
+                                    <h1>Prospect List</h1>
+                                    <div class="add-product">
+{#                                        <a href="{% url "crm_admin:prospect_add" %}">Add Prospect</a>#}
+                                        <a href="#">Add Prospect</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="sparkline13-graph">
+                                <div class="datatable-dashv1-list custom-datatable-overright">
+                                    <div id="toolbar">
+                                        <select class="form-control dt-tb">
+											<option value="">Export Basic</option>
+											<option value="all">Export All</option>
+											<option value="selected">Export Selected</option>
+										</select>
+                                    </div>
+                                    <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
+                                        data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                                        <thead>
+                                            <tr>
+                                                <th data-field="state" data-checkbox="true"></th>
+                                                <th data-field="id">No</th>
+                                                <th data-field="name" data-editable="true">Name</th>
+                                                <th data-field="executives" data-editable="true">Email</th>
+                                                <th data-field="email" data-editable="true">Phone</th>
+                                                <th data-field="phone" data-editable="true">Company</th>
+                                                <th data-field="complete">Industry Typre/th>
+                                                <th data-field="task" data-editable="true">Emp Size</th>
+                                                <th data-field="city" data-editable="true">Website</th>
+                                                <th data-field="action">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            {% for prospect in prospects %}
+                                                <tr>
+                                                    <td></td>
+                                                    <td>{{ forloop.counter }}</td>
+                                                    <td>{{ prospect.get_display_text }}</td>
+                                                    <td>{{ prospect.email }}</td>
+                                                    <td>{{ prospect.phone }}</td>
+                                                    <td>{{ prospect.company }}</td>
+                                                    <td>{{ prospect.industry_type }}</td>
+                                                    <td>{{ prospect.emp_size }}</td>
+                                                    <td>{{ prospect.city }}</td>
+                                                    <td class="datatable-ct"><a href="{{ prospect.get_admin_update_url }}"><i class="fa fa-eye"></i></a></td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

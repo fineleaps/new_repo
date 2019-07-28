@@ -1,0 +1,21 @@
+{% extends "crm_admin/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Campaigns{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <form method="post">
+            {% if client.get_active_campaigns %}
+                <span class="alert alert-danger btn-block">Client have Active Campaigns</span>
+            {% endif %}
+            <h3>{{ client.get_display_text }}</h3>
+            <h4>Make sure your really wants to delete this Client</h4>
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" class="btn btn-danger" value="Delete">
+        </form>
+    </div>
+    <br><br><br>
+
+{% endblock %}

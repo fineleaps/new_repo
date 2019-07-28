@@ -21,6 +21,16 @@ urlpatterns = [
     url(r'^clients/update/(?P<slug>[-\w]+)/$', views.ClientUpdateView.as_view(), name="client_update"),
     url(r'^clients/delete/(?P<slug>[-\w]+)/$', views.ClientDeleteView.as_view(), name="client_delete"),
 
+    url(r"^prospects/list/$", views.ProspectListView.as_view(), name="prospect_list"),
+    url(r"^prospects/list/filter/$", views.ProspectListFilterView.as_view(), name="prospect_list_filter"),
+    url(r'^executives/update/(?P<id>[0-9]+)/$', views.ExecutiveUpdateView.as_view(), name="executive_update"),
+
+    url(r"^executives/list/$", views.ExecutiveListView.as_view(), name="executive_list"),
+    url(r'^executives/update/(?P<id>[0-9]+)/$', views.ExecutiveUpdateView.as_view(), name="executive_update"),
+    url(r'^executives/delete/(?P<id>[0-9]+)/$', views.ExecutiveDeleteView.as_view(), name="executive_delete"),
+
+    url(r'^progress/$', views.ProgressFilterView.as_view(), name='progress'),
+
     # url(r'^campaign/list/$', views.CampaignListView.as_view(), name='campaign_list'),
     # path('campaign/detail/<int:pk>/', views.CampaignDetailView.as_view(), name='campaign_detail'),
 

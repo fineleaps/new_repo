@@ -4,6 +4,7 @@ from django.utils import timezone
 import datetime
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User as Django_User_Model
+from django.urls import reverse_lazy
 
 User_Model = Django_User_Model
 #
@@ -75,6 +76,22 @@ class Executive(models.Model):
     @property
     def get_views(self):
         return self.result_set.filter(result_choice="View")
+
+    @property
+    def get_admin_update_url(self):
+        return reverse_lazy("crm_admin:executive_update", kwargs={"id": self.id})
+
+    @property
+    def get_admin_delete_url(self):
+        return reverse_lazy("crm_admin:executive_delete", kwargs={"id": self.id})
+
+    @property
+    def get_active_campaigns(self):
+        return self.campaign_set.filter(is_active=True)
+
+    @property
+    def get_campaigns(self):
+        return self.campaign_set.all()
 
     def get_leads_by_campaign(self, campaign_id):
         return self.result_set.filter(result_choice="Lead", prospect_campaign_relation__campaign_id=campaign_id)

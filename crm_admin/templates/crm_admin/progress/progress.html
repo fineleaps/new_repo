@@ -1,4 +1,4 @@
-{% extends "portal/base.html" %}
+{% extends "crm_admin/base.html" %}
 {% load result_tags %}
 {% load crispy_forms_tags %}
 {% load widget_tweaks %}
@@ -15,6 +15,7 @@
 
                         <form method="get">
 
+                                    {{ filter.form.by|as_crispy_field }}
 
                                     {{ filter.form.prospect_campaign_relation__campaign|as_crispy_field }}
                                     {{ filter.form.result_choice|as_crispy_field }}

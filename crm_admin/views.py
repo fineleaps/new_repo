@@ -1,18 +1,18 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.views.generic import View
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DeleteView, UpdateView, FormView, DetailView, CreateView
 from campaigns.models import Campaign, ProspectCampaignRelation
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import Http404
-from results.forms import ResultAddForm
 from django.urls import reverse_lazy
 from . import alert_messages
 from django.contrib import messages
 from .forms import CampaignUpdateForm, CampaignAddForm, ClientAddForm, ClientUpdateForm
 from clients.models import Client
+from prospects.models import Prospect
+from .filters import ProspectFilter, ResultFilter
+from django_filters.views import FilterView
+from portal.models import Executive
 
 
 def superuser_required():
@@ -160,3 +160,58 @@ class ClientDeleteView(LoginRequiredMixin, DeleteView):
     template_name = "crm_admin/clients/delete.html"
     context_object_name = "client"
     success_url = reverse_lazy("crm_admin:client_list")
+
+
+@superuser_required()
+class ProspectListView(LoginRequiredMixin, ListView):
+
+    model = Prospect
+    template_name = "crm_admin/prospects/list.html"
+    context_object_name = "prospects"
+
+
+@superuser_required()
+class ProspectListFilterView(LoginRequiredMixin, FilterView):
+
+    filterset_class = ProspectFilter
+    template_name = "crm_admin/prospects/list_filter.html"
+    context_object_name = "prospects"
+
+
+@superuser_required()
+class ExecutiveListView(LoginRequiredMixin, ListView):
+
+    model = Executive
+    template_name = "crm_admin/executives/list.html"
+    context_object_name = "executives"
+
+
+@superuser_required()
+class ExecutiveUpdateView(LoginRequiredMixin, UpdateView):
+
+    model = Executive
+    template_name = "crm_admin/executives/update.html"
+    context_object_name = "executive"
+    fields = ("first_name", "last_name", "email", "phone", "employee_id", "date_of_birth", "details")
+    success_url = reverse_lazy("crm_admin:executive_list")
+
+    slug_field = "id"
+    slug_url_kwarg = "id"
+
+
+@superuser_required()
+class ExecutiveDeleteView(LoginRequiredMixin, DeleteView):
+
+    model = Executive
+    template_name = "crm_admin/executives/delete.html"
+    context_object_name = "executive"
+    success_url = reverse_lazy("crm_admin:executive_list")
+    slug_field = "id"
+    slug_url_kwarg = "id"
+
+
+@superuser_required()
+class ProgressFilterView(LoginRequiredMixin, FilterView):
+
+    filterset_class = ResultFilter
+    template_name = 'crm_admin/progress/progress.html'

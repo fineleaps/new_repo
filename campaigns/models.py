@@ -18,7 +18,7 @@ class Campaign(models.Model):
     details = models.TextField(blank=True)
     start_date = models.DateField(blank=True)
     end_date = models.DateField(blank=True)
-    executives = models.ManyToManyField('portal.Executive', blank=True)
+    executives = models.ManyToManyField('portal.User', blank=True)
     prospects = models.ManyToManyField('prospects.Prospect', blank=True, through='ProspectCampaignRelation')
 
     added_on = models.DateTimeField(auto_now_add=True)

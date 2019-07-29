@@ -8,7 +8,7 @@ class Result(models.Model):
 
     prospect_campaign_relation = models.OneToOneField('campaigns.ProspectCampaignRelation', on_delete=models.CASCADE)
     on = models.DateTimeField(auto_now_add=True)
-    by = models.ForeignKey('portal.Executive', on_delete=models.CASCADE)
+    by = models.ForeignKey('portal.User', on_delete=models.CASCADE)
     result_choice = models.CharField(max_length=2, choices=ResultChoices)
     details = models.TextField(blank=True)
 

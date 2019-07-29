@@ -1,6 +1,6 @@
 from django.views.generic import View, DetailView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Executive
+from .models import User
 from django.urls import reverse_lazy
 from .forms import ProfileUpdateForm
 from django.contrib import messages
@@ -66,30 +66,19 @@ class ProfileView(LoginRequiredMixin, DetailView):
     context_object_name = "executive"
 
     def get_object(self, queryset=None):
-        return self.request.user.executive
+        return self.request.user
 
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
 
-    model = Executive
+    model = User
     form_class = ProfileUpdateForm
     template_name = "portal/profile_update.html"
     success_url = reverse_lazy("portal:profile_update")
 
     def get_object(self, queryset=None):
-        return self.request.user.executive
+        return self.request.user
 
     def form_valid(self, form):
         messages.success(self.request, alert_messages.PROFILE_UPDATED_MESSAGE)
         return super().form_valid(form)
-
-
-
-# e
-# @login_required
-# def profile(request):
-#
-#     context = {"executive": }
-#
-#     return render(rquest, 'portal/profile.html', context)
-#

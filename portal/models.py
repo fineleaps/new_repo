@@ -1,54 +1,50 @@
 from django.db import models
-from django.conf import settings
-from django.utils import timezone
 import datetime
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User as Django_User_Model
 from django.urls import reverse_lazy
-
-User_Model = Django_User_Model
-#
-# class User(Django_User_Model):
-#
-#     class Meta:
-#         proxy = True
-#         # ordering = ('first_name', )
-#
-#     def get_display_text(self):
-#         return self.executive.first_name
+from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import PermissionsMixin
+from django.utils.translation import ugettext_lazy as _
+from .managers import UserManager
 
 
-def create_executive(instance, sender, *args, **kwargs):
-    if not hasattr(instance, 'executive'):
-        Executive.objects.create(user=instance)
-
-
-post_save.connect(create_executive, sender=Django_User_Model)
-
-
-class Executive(models.Model):
-    user = models.OneToOneField(User_Model, on_delete=models.PROTECT)
+class User(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(_('email address'), unique=True)
 
     first_name = models.CharField(max_length=32, blank=True)
     last_name = models.CharField(max_length=32, blank=True)
 
-    email = models.EmailField(blank=True)
     phone = models.CharField(max_length=13, blank=True)
 
     employee_id = models.CharField(max_length=12, blank=True)
 
+    date_joined = models.DateTimeField(_('date joined'), auto_now_add=True)
     date_of_birth = models.DateField(blank=True, null=True)
     details = models.TextField(blank=True)
 
+    is_active = models.BooleanField(_('active'), default=True)
+    is_staff = models.BooleanField(_('staff'), default=False)
+    is_superuser = models.BooleanField(_('superuser'), default=False)
+
+    objects = UserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    class Meta:
+        verbose_name = _('user')
+        verbose_name_plural = _('users')
+
     def __str__(self):
-        return self.user.__str__()
+        return self.email
 
     @property
     def get_display_text(self):
-        if self.first_name:
-            return self.first_name
+        if self.get_full_name:
+            return self.get_full_name
         else:
-            return self.user.username
+            return self.__str__()
 
     @property
     def get_full_name(self):
@@ -59,11 +55,14 @@ class Executive(models.Model):
         if self.employee_id:
             return self.employee_id
         else:
-            return "Not entered yet"
+            return "Unknown"
 
     @property
     def get_age(self):
-        return datetime.date.today() - self.date_of_birth
+        try:
+            return datetime.date.today() - self.date_of_birth
+        except:
+            return "Unknown"
 
     @property
     def get_leads(self):
@@ -101,5 +100,3 @@ class Executive(models.Model):
 
     def get_views_by_campaign(self, campaign_id):
         return self.result_set.filter(result_choice="View", prospect_campaign_relation__campaign_id=campaign_id)
-
-

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Executive
+from .models import User
 
 
 class ProfileUpdateForm(forms.ModelForm):
@@ -11,7 +11,7 @@ class ProfileUpdateForm(forms.ModelForm):
 
     class Meta:
 
-        model = Executive
+        model = User
         fields = ('first_name', 'last_name', 'email', 'phone', 'date_of_birth', 'employee_id')
 
 

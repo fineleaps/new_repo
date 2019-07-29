@@ -13,7 +13,7 @@ class CampaignListView(LoginRequiredMixin, ListView):
     context_object_name = "campaigns"
 
     def get_queryset(self):
-        return super().get_queryset().filter(executives__in=(self.request.user.executive, ), is_active=True)
+        return super().get_queryset().filter(executives__in=(self.request.user, ), is_active=True)
 
 
 class CampaignDetailView(LoginRequiredMixin, DetailView):
@@ -24,14 +24,14 @@ class CampaignDetailView(LoginRequiredMixin, DetailView):
 
     def get_object(self, queryset=None):
         campaign = super().get_object()
-        if self.request.user.executive  in campaign.executives.all():
+        if self.request.user in campaign.executives.all():
             return campaign
         else:
             raise Http404("No Campaign Found")
 
 
 def prospect_get(request, slug):
-    campaign = get_object_or_404(Campaign, slug=slug, executives__in=(request.user.executive, ))
+    campaign = get_object_or_404(Campaign, slug=slug, executives__in=(request.user, ))
     prospect = campaign.prospect_get
     context = {'prospect': prospect, 'campaign': campaign}
     return render(request, 'campaigns/prospect_get.html', context)

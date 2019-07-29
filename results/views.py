@@ -15,11 +15,11 @@ class LeadsListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['campaigns'] = self.request.user.executive.campaign_set.all()
+        context['campaigns'] = self.request.user.campaign_set.all()
         return context
 
     def get_queryset(self):
-        return super().get_queryset().filter(by=self.request.user.executive)
+        return super().get_queryset().filter(by=self.request.user)
 
 
 class ViewsListView(LoginRequiredMixin, ListView):
@@ -29,11 +29,11 @@ class ViewsListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['campaigns'] = self.request.user.executive.campaign_set.all()
+        context['campaigns'] = self.request.user.campaign_set.all()
         return context
 
     def get_queryset(self):
-        return super().get_queryset().filter(by=self.request.user.executive)
+        return super().get_queryset().filter(by=self.request.user)
 
 
 class DNCsListView(LoginRequiredMixin, ListView):
@@ -43,21 +43,21 @@ class DNCsListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['campaigns'] = self.request.user.executive.campaign_set.all()
+        context['campaigns'] = self.request.user.campaign_set.all()
         return context
 
     def get_queryset(self):
-        return super().get_queryset().filter(by=self.request.user.executive)
+        return super().get_queryset().filter(by=self.request.user)
 
 
 def result_add(request, campaign_slug, prospect_id):
     if request.method == 'POST':
         post_dict = request.POST
         pcr = get_object_or_404(ProspectCampaignRelation, campaign__slug=campaign_slug, prospect__id=prospect_id,
-                                campaign__executives__in=(request.user.executive, ))
+                                campaign__executives__in=(request.user, ))
         Result.objects.create(prospect_campaign_relation=pcr,
                                      result_choice=post_dict.get('result_choice'),
-                                     by=request.user.executive,
+                                     by=request.user,
                                      details=post_dict.get('result_details'))
         return redirect('campaigns:prospect_get', slug=pcr.campaign.slug)
     return redirect('campaigns:prospect_get', slug=campaign_slug)

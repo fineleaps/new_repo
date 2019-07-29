@@ -2,6 +2,7 @@ from prospects.models import Prospect
 from results.models import Result
 import django_filters
 
+
 class ProspectFilter(django_filters.FilterSet):
 
     JOB_TITLE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("job_title", flat=True).distinct()]

@@ -12,7 +12,7 @@ from clients.models import Client
 from prospects.models import Prospect
 from .filters import ProspectFilter, ResultFilter
 from django_filters.views import FilterView
-from portal.models import Executive
+from portal.models import User
 
 
 def superuser_required():
@@ -181,7 +181,7 @@ class ProspectListFilterView(LoginRequiredMixin, FilterView):
 @superuser_required()
 class ExecutiveListView(LoginRequiredMixin, ListView):
 
-    model = Executive
+    model = User
     template_name = "crm_admin/executives/list.html"
     context_object_name = "executives"
 
@@ -189,7 +189,7 @@ class ExecutiveListView(LoginRequiredMixin, ListView):
 @superuser_required()
 class ExecutiveUpdateView(LoginRequiredMixin, UpdateView):
 
-    model = Executive
+    model = User
     template_name = "crm_admin/executives/update.html"
     context_object_name = "executive"
     fields = ("first_name", "last_name", "email", "phone", "employee_id", "date_of_birth", "details")
@@ -202,7 +202,7 @@ class ExecutiveUpdateView(LoginRequiredMixin, UpdateView):
 @superuser_required()
 class ExecutiveDeleteView(LoginRequiredMixin, DeleteView):
 
-    model = Executive
+    model = User
     template_name = "crm_admin/executives/delete.html"
     context_object_name = "executive"
     success_url = reverse_lazy("crm_admin:executive_list")

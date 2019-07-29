@@ -1,6 +1,16 @@
 from django import forms
 from campaigns.models import Campaign
 from clients.models import Client
+from django.contrib.auth.forms import UserCreationForm
+from portal.models import User
+
+
+class CustomUserCreationForm(UserCreationForm):
+
+    class Meta:
+        model = User
+        fields = ("email", "first_name", "last_name", "phone", "date_of_birth", "employee_id", "details",
+                  "password1", "password2")
 
 
 class CampaignUpdateForm(forms.ModelForm):

@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^executives/update/(?P<id>[0-9]+)/$', views.ExecutiveUpdateView.as_view(), name="executive_update"),
 
     url(r"^executives/list/$", views.ExecutiveListView.as_view(), name="executive_list"),
+    url(r"^executives/add/$", views.ExecutiveAddView.as_view(), name="executive_add"),
     url(r'^executives/update/(?P<id>[0-9]+)/$', views.ExecutiveUpdateView.as_view(), name="executive_update"),
     url(r'^executives/delete/(?P<id>[0-9]+)/$', views.ExecutiveDeleteView.as_view(), name="executive_delete"),
 

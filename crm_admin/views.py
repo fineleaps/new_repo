@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from . import alert_messages
 from django.contrib import messages
-from .forms import CampaignUpdateForm, CampaignAddForm, ClientAddForm, ClientUpdateForm
+from .forms import CampaignUpdateForm, CampaignAddForm, ClientAddForm, ClientUpdateForm, CustomUserCreationForm
 from clients.models import Client
 from prospects.models import Prospect
 from .filters import ProspectFilter, ResultFilter
@@ -220,3 +220,11 @@ class ProgressFilterView(LoginRequiredMixin, FilterView):
 
     filterset_class = ResultFilter
     template_name = 'crm_admin/progress/progress.html'
+
+
+class ExecutiveAddView(CreateView):
+
+    form_class = CustomUserCreationForm
+    model = User
+    template_name = "crm_admin/executives/add.html"
+    success_url = reverse_lazy("crm_admin:executive_list")

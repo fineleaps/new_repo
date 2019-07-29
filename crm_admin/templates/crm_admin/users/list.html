@@ -1,9 +1,12 @@
 {% extends "crm_admin/base.html" %}
 {% load result_tags %}
 {% load static %}
-{% block title %}Executive{% endblock %}
+{% block title %}Prospect{% endblock %}
 
 {% block content %}
+
+
+
             <div class="data-table-area mg-b-15">
             <div class="container-fluid">
                 <div class="row">
@@ -11,9 +14,10 @@
                         <div class="sparkline13-list">
                             <div class="sparkline13-hd">
                                 <div class="main-sparkline13-hd">
-                                    <h1>Executive List</h1>
+                                    <h1>Prospect List</h1>
                                     <div class="add-product">
-                                        <a href="{% url "crm_admin:executive_add" %}">Add Executive</a>
+{#                                        <a href="{% url "crm_admin:prospect_add" %}">Add Prospect</a>#}
+                                        <a href="#">Add Prospect</a>
                                     </div>
                                 </div>
 
@@ -34,27 +38,29 @@
                                                 <th data-field="state" data-checkbox="true"></th>
                                                 <th data-field="id">No</th>
                                                 <th data-field="name" data-editable="true">Name</th>
-                                                <th data-field="phone" data-editable="true">Phone</th>
                                                 <th data-field="executives" data-editable="true">Email</th>
-                                                <th data-field="email" data-editable="true">Campaigns</th>
-                                                <th data-field="task" data-editable="true">Emp id</th>
-                                                <th data-field="city" data-editable="true">DOB</th>
+                                                <th data-field="email" data-editable="true">Phone</th>
+                                                <th data-field="phone" data-editable="true">Company</th>
+                                                <th data-field="complete">Industry Typre/th>
+                                                <th data-field="task" data-editable="true">Emp Size</th>
+                                                <th data-field="city" data-editable="true">Website</th>
                                                 <th data-field="action">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-                                            {% for executive in executives %}
+                                            {% for prospect in prospects %}
                                                 <tr>
                                                     <td></td>
                                                     <td>{{ forloop.counter }}</td>
-                                                    <td>{{ executive.get_full_name }}</td>
-                                                    <td>{{ executive.phone }}</td>
-                                                    <td>{{ executive.email }}</td>
-                                                    <td>{{ executive.get_campaigns.count }}</td>
-                                                    <td>{{ executive.employee_id }}</td>
-                                                    <td>{{ executive.date_of_birth }}</td>
-                                                    <td class="datatable-ct"><a href="{{ executive.get_admin_update_url }}"><i class="fa fa-eye"></i></a></td>
+                                                    <td>{{ prospect.get_display_text }}</td>
+                                                    <td>{{ prospect.email }}</td>
+                                                    <td>{{ prospect.phone }}</td>
+                                                    <td>{{ prospect.company }}</td>
+                                                    <td>{{ prospect.industry_type }}</td>
+                                                    <td>{{ prospect.emp_size }}</td>
+                                                    <td>{{ prospect.city }}</td>
+                                                    <td class="datatable-ct"><a href="{{ prospect.get_admin_update_url }}"><i class="fa fa-eye"></i></a></td>
                                                 </tr>
                                             {% endfor %}
                                         </tbody>

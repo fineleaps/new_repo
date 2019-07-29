@@ -37,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = _('users')
 
     def __str__(self):
-        return self.email
+        return self.get_email_name
 
     @property
     def get_display_text(self):
@@ -48,7 +48,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     @property
     def get_full_name(self):
-        return "{} {}".format(self.first_name, self.last_name)
+        return "{} {}".format(self.first_name, self.last_name) if (self.first_name or self.last_name) else ""
+
+    @property
+    def get_email_name(self):
+        email_str = str(self.email)
+        return email_str[:email_str.rfind("@")]
 
     @property
     def get_employee_id(self):

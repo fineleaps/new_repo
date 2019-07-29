@@ -185,6 +185,11 @@ class ExecutiveListView(LoginRequiredMixin, ListView):
     template_name = "crm_admin/executives/list.html"
     context_object_name = "executives"
 
+    def get_queryset(self):
+        qs = super().get_queryset().filter(is_staff=False, is_superuser=False)
+        return qs
+
+
 
 @superuser_required()
 class ExecutiveUpdateView(LoginRequiredMixin, UpdateView):

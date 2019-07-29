@@ -5,15 +5,15 @@ import django_filters
 
 class ProspectFilter(django_filters.FilterSet):
 
-    JOB_TITLE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("job_title", flat=True).distinct()]
-    INDUSTRY_TYPE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("industry_type", flat=True).distinct()]
-    EMP_SIZE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("emp_size", flat=True).distinct()]
-    STATE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("state", flat=True).distinct()]
-
-    job_title = django_filters.ChoiceFilter(choices=JOB_TITLE_CHOICES)
-    industry_type = django_filters.ChoiceFilter(choices=INDUSTRY_TYPE_CHOICES)
-    emp_size = django_filters.ChoiceFilter(choices=EMP_SIZE_CHOICES)
-    state = django_filters.ChoiceFilter(choices=STATE_CHOICES)
+    # JOB_TITLE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("job_title", flat=True).distinct()]
+    # INDUSTRY_TYPE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("industry_type", flat=True).distinct()]
+    # EMP_SIZE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("emp_size", flat=True).distinct()]
+    # STATE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("state", flat=True).distinct()]
+    #
+    # job_title = django_filters.ChoiceFilter(choices=JOB_TITLE_CHOICES)
+    # industry_type = django_filters.ChoiceFilter(choices=INDUSTRY_TYPE_CHOICES)
+    # emp_size = django_filters.ChoiceFilter(choices=EMP_SIZE_CHOICES)
+    # state = django_filters.ChoiceFilter(choices=STATE_CHOICES)
 
     class Meta:
         model = Prospect

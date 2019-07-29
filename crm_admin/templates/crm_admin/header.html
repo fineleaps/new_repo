@@ -44,7 +44,7 @@
                                             <li class="nav-item">
                                                 <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
 {#                                                    <img src="{% static "img/logo/logo.png" %}" alt="" />#}
-                                                    <span class="admin-name">Executive : {{ user.username }}</span>
+                                                    <span class="admin-name">Admin : {{ user.get_display_text }}</span>
                                                     <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                 </a>
                                                 <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">

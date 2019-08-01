@@ -33,13 +33,7 @@
                                                             <div class="form-group col-lg-6">
                                                                 {{ form.client|as_crispy_field }}
                                                             </div>
-{##}
-{#                                                            <div class="form-group colg-lg-6">#}
-{#                                                                <div class="i-checks pull-left">#}
-{#                                                                    <label>#}
-{#                                                                        <input name="is_active" type="checkbox"> <i></i> Option one </label>#}
-{#                                                                </div>#}
-{#                                                            </div>#}
+
 
                                                             <div class="form-group col-lg-6">
                                                                 <br>
@@ -53,7 +47,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="form-group col-lg-6 data-custon-pick" id="data_2">
-                                                                <label>End Date</label>
+                                                                <label>Start Date</label>
                                                                 <div class="input-group date">
                                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                                     <input name="start_date" type="text" class="form-control" value="">
@@ -63,12 +57,23 @@
                                                                 <label>End Date</label>
                                                                 <div class="input-group date">
                                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                    <input name="end_date" type="text" class="form-control" value=" ">
+                                                                    <input name="end_date" type="text" class="form-control" value="">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        {{ form.script|as_crispy_field }}
-                                                        {{ form.details|as_crispy_field }}
+
+                                                        <div class="row">
+                                                            <div class="col-lg-6 form-group">
+                                                                {{ form.details|as_crispy_field }}
+                                                            </div>
+
+                                                            <div class="col-lg-6 form-group">
+                                                                {{ form.script|as_crispy_field }}
+                                                            </div>
+                                                        </div>
+
+{#                                                        {{ form.script|as_crispy_field }}#}
+{#                                                        {{ form.details|as_crispy_field }}#}
                                                         {{ form.executives|as_crispy_field }}
 
 

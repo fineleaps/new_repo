@@ -1,8 +1,5 @@
-django==2
-django-phone-field
+django
 django-admin-list-filter-dropdown
 django-crispy-forms
 django-filter
-django-smart-selects
 django-widget-tweaks
-django-view-breadcrumbs

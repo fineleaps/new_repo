@@ -74,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
 
             ],
         },
@@ -122,12 +123,15 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
 
-# AUTH_USER_MODEL = "portal.User"
+DATE_INPUT_FORMATS = ('%d/%m/%Y', '%Y/%m/%d')
+
+
+AUTH_USER_MODEL = "portal.User"
 
 
 # Static files (CSS, JavaScript, Images)

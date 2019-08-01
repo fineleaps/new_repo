@@ -15,6 +15,8 @@ class CustomUserCreationForm(UserCreationForm):
 
 class CampaignUpdateForm(forms.ModelForm):
 
+    # start_date = forms.DateField(widget=forms.SelectDateWidget(), input_formats=(""))
+
     class Meta:
 
         model = Campaign

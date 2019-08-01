@@ -10,6 +10,12 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+label{
+    font-weight: normal!important;
+}
+
+
+
 html {
     color: #222;
     font-size: 1em;

@@ -15,7 +15,7 @@ class Prospect(models.Model):
     city = models.CharField(max_length=32, blank=True)
     state = models.CharField(max_length=32, blank=True)
     country = models.CharField(max_length=32, blank=True)
-    zip_code = models.IntegerField(blank=True, null=True)
+    zip_code = models.CharField(max_length=12, blank=True, null=True)
     details = models.TextField(blank=True)
 
     @property

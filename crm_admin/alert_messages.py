@@ -6,10 +6,14 @@ CAMPAIGN_UPDATED_MESSAGE = "Campaign Updated Successfully."
 CAMPAIGN_ADDED_MESSAGE = "Campaign Added Successfully."
 CAMPAIGN_DELETED_MESSAGE = "Campaign Deleted Successfully."
 
-
 CLIENT_UPDATED_MESSAGE = "Client Updated Successfully."
 CLIENT_ADDED_MESSAGE = "Client Added Successfully."
 CLIENT_DELETED_MESSAGE = "Client Deleted Successfully."
+
+EXECUTIVE_UPDATED_MESSAGE = "Executive Updated Successfully."
+EXECUTIVE_ADDED_MESSAGE = "Executive Added Successfully."
+EXECUTIVE_DELETED_MESSAGE = "Executive Deleted Successfully."
+
 
 
 

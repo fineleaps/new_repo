@@ -15,41 +15,43 @@
 
                         <form method="get">
 
-                                    {{ filter.form.by|as_crispy_field }}
-
-                                    {{ filter.form.prospect_campaign_relation__campaign|as_crispy_field }}
-                                    {{ filter.form.result_choice|as_crispy_field }}
-
-                                    <div class="form-group data-custon-pick" id="data_2">
-                                        <label>By Exact Date</label>
-                                        <div class="input-group date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            {% render_field filter.form.on class="form-control" %}
+                                    <div class="row">
+                                        <div class="form-group col-lg-4">
+                                            {{ filter.form.by|as_crispy_field }}
+                                        </div>
+                                        <div class="form-group col-lg-4">
+                                            {{ filter.form.prospect_campaign_relation__campaign|as_crispy_field }}
+                                        </div>
+                                        <div class="form-group col-lg-4">
+                                            {{ filter.form.result_choice|as_crispy_field }}
                                         </div>
                                     </div>
 
+                                    <div class="row">
+                                        <div class="form-group col-lg-6">
+                                            {{ filter.form.date_period|as_crispy_field }}
+                                        </div>
+                                        <div class="form-group col-lg-6 data-custon-pick" id="data_2">
+                                            <label>By Exact Date</label>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                {% render_field filter.form.date class="form-control" %}
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group data-custon-pick data-custom-mg" id="data_5">
-                                        <label>By Date Range</label>
+                                        <label>By Date Duration</label>
                                         <div class="input-daterange input-group" id="datepicker">
-                                            <input type="text" class="form-control" name="date_range_after" />
+                                            <input type="text" class="form-control" name="date_duration_after" />
                                             <span class="input-group-addon">to</span>
-                                            <input type="text" class="form-control" name="date_range_before"/>
+                                            <input type="text" class="form-control" name="date_duration_before"/>
                                         </div>
                                     </div>
-
-                                    {{ filter.form.d_range|as_crispy_field }}
-
+                                    <br>
                             <input type="submit" value="Get Records" class="btn btn-primary font-">
 
                         </form>
 
-
-{#                    <form method="get">#}
-{#                        {% csrf_token %}#}
-{#                        {{ filter.form|crispy }}#}
-{#                        <input class="btn btn-primary" type="submit">#}
-{##}
-{#                    </form>#}
                         <br><br>
 
                         <h2 class="text-muted text-center">{% if filter.qs %}{{ filter.qs.count }} Records found{% endif %}</h2>

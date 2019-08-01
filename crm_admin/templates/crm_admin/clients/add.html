@@ -25,34 +25,61 @@
 
                                                         {% csrf_token %}
 
-{#                                                        <div class="row">#}
-{##}
-{#                                                            <div class="form-group col-lg-6">#}
-{#                                                                {{ form.first_name|as_crispy_field }}#}
-{#                                                            </div>#}
-{##}
-{#                                                            <div class="form-group col-lg-6">#}
-{#                                                                {{ form.last_name|as_crispy_field }}#}
-{#                                                            </div>#}
-{##}
-{#                                                            <div class="form-group col-lg-6">#}
-{#                                                                {{ form.phone|as_crispy_field }}#}
-{#                                                            </div>#}
-{##}
-{#                                                            <div class="form-group col-lg-6">#}
-{#                                                                {{ form.email|as_crispy_field }}#}
-{#                                                            </div>#}
-{##}
-{#                                                            <div class="form-group col-lg-6">#}
-{#                                                                {{ form.employee_id|as_crispy_field }}#}
-{#                                                            </div>#}
-{##}
-{#                                                            <div class="form-group col-lg-6">#}
-{#                                                                {{ form.date_of_birth|as_crispy_field }}#}
-{#                                                            </div>#}
-{##}
-{#                                                        </div>#}
-                                                        {{ form|crispy }}
+                                                        <div class="row">
+                                                            <div class="form-group col-lg-6">
+                                                                {{ form.name|as_crispy_field }}
+                                                            </div>
+                                                            <div class="form-group col-lg-6">
+                                                                {{ form.director|as_crispy_field }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-lg-6">
+                                                                {{ form.company|as_crispy_field }}
+                                                            </div>
+                                                            <div class="form-group col-lg-6">
+                                                                {{ form.website|as_crispy_field }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-lg-3">
+                                                                {{ form.city|as_crispy_field }}
+                                                            </div>
+                                                            <div class="form-group col-lg-3">
+                                                                {{ form.state|as_crispy_field }}
+                                                            </div>
+                                                            <div class="form-group col-lg-3">
+                                                                {{ form.country|as_crispy_field }}
+                                                            </div>
+                                                            <div class="form-group col-lg-3">
+                                                                {{ form.zip_code|as_crispy_field }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-lg-6">
+                                                                {{ form.phone|as_crispy_field }}
+                                                            </div>
+                                                            <div class="form-group col-lg-6">
+                                                                {{ form.phone2|as_crispy_field }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-lg-6">
+                                                                {{ form.email|as_crispy_field }}
+                                                            </div>
+                                                            <div class="form-group col-lg-6">
+                                                                {{ form.email2|as_crispy_field }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-lg-6">
+                                                                {{ form.industry_type|as_crispy_field }}
+                                                            </div>
+                                                            <div class="form-group col-lg-6">
+                                                                {{ form.emp_size|as_crispy_field }}
+                                                            </div>
+                                                        </div>
+                                                        {{ form.details|as_crispy_field }}
 
                                                         <div class="row">
                                                             <div class="col-lg-12">

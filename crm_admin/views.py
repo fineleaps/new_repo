@@ -80,7 +80,6 @@ class CampaignAddView(LoginRequiredMixin, CreateView):
     #     return campaign.get_admin_update_url
 
     def form_valid(self, form):
-        print(555)
         messages.success(self.request, alert_messages.CAMPAIGN_ADDED_MESSAGE)
         return super().form_valid(form)
 
@@ -93,9 +92,10 @@ class CampaignDeleteView(LoginRequiredMixin, DeleteView):
     context_object_name = "campaign"
     success_url = reverse_lazy("crm_admin:campagin_list")
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data()
-        return context
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, alert_messages.CAMPAIGN_DELETED_MESSAGE)
+        return super().delete(self, request, *args, **kwargs)
+
 
 
 @superuser_required()
@@ -144,7 +144,6 @@ class ClientAddView(LoginRequiredMixin, CreateView):
     #     return client.get_admin_update_url
 
     def get_object(self, queryset=None):
-
         client = self.get_object()
         return client
 
@@ -160,6 +159,10 @@ class ClientDeleteView(LoginRequiredMixin, DeleteView):
     template_name = "crm_admin/clients/delete.html"
     context_object_name = "client"
     success_url = reverse_lazy("crm_admin:client_list")
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, alert_messages.CLIENT_DELETED_MESSAGE)
+        return super().delete(self, request, *args, **kwargs)
 
 
 @superuser_required()
@@ -190,7 +193,6 @@ class ExecutiveListView(LoginRequiredMixin, ListView):
         return qs
 
 
-
 @superuser_required()
 class ExecutiveUpdateView(LoginRequiredMixin, UpdateView):
 
@@ -203,6 +205,10 @@ class ExecutiveUpdateView(LoginRequiredMixin, UpdateView):
     slug_field = "id"
     slug_url_kwarg = "id"
 
+    def form_valid(self, form):
+        messages.success(self.request, alert_messages.EXECUTIVE_UPDATED_MESSAGE)
+        return super().form_valid(form)
+
 
 @superuser_required()
 class ExecutiveDeleteView(LoginRequiredMixin, DeleteView):
@@ -213,6 +219,10 @@ class ExecutiveDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("crm_admin:executive_list")
     slug_field = "id"
     slug_url_kwarg = "id"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, alert_messages.EXECUTIVE_DELETED_MESSAGE)
+        return super().delete(self, request, *args, **kwargs)
 
 
 @superuser_required()
@@ -228,3 +238,7 @@ class ExecutiveAddView(CreateView):
     model = User
     template_name = "crm_admin/executives/add.html"
     success_url = reverse_lazy("crm_admin:executive_list")
+
+    def form_valid(self, form):
+        messages.success(self.request, alert_messages.EXECUTIVE_ADDED_MESSAGE)
+        return super().form_valid(form)

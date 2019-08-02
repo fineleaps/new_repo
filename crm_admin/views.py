@@ -56,7 +56,7 @@ class CampaignUpdateView(LoginRequiredMixin, UpdateView):
     model = Campaign
     form_class = CampaignUpdateForm
     template_name = "crm_admin/campaigns/update.html"
-    success_url = reverse_lazy("crm_admin:campagin_list")
+    success_url = reverse_lazy("crm_admin:campaign_list")
 
     # def get_success_url(self):
     #     campaign = self.get_object()
@@ -73,7 +73,7 @@ class CampaignAddView(LoginRequiredMixin, CreateView):
     model = Campaign
     form_class = CampaignAddForm
     template_name = "crm_admin/campaigns/add.html"
-    success_url = reverse_lazy("crm_admin:campagin_list")
+    success_url = reverse_lazy("crm_admin:campaign_list")
 
     # def get_success_url(self):
     #     campaign = self.get_object()
@@ -90,7 +90,7 @@ class CampaignDeleteView(LoginRequiredMixin, DeleteView):
     model = Campaign
     template_name = "crm_admin/campaigns/delete.html"
     context_object_name = "campaign"
-    success_url = reverse_lazy("crm_admin:campagin_list")
+    success_url = reverse_lazy("crm_admin:campaign_list")
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, alert_messages.CAMPAIGN_DELETED_MESSAGE)

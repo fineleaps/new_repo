@@ -6,78 +6,107 @@
 
 {% block content %}
 
-
-{#        {% with leads_n = campaign.get_all_leads.count all_prospects_n = campaign.get_all_prospects.count attempted_prospects_n = campaign.prospects_attempted.count non_attempted_prospects_n = campaign.prospects_non_attempted.count %}#}
-
-
-        <div class="dashtwo-order-area mg-tb-30">
+        <div class="income-order-visit-user-area">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="analytics-edu-wrap ant-res-b-30 reso-mg-b-30">
-                            <div class="skill-content-3 analytics-edu">
-                                <div class="skill">
-                                    <div class="progress">
-                                        <div class="lead-content">
-                                            <h3><span class="counter">{{ campaign.get_all_prospects.count }}</span></h3>
-                                            <p>All time prospects</p>
-                                        </div>
-                                        <div class="progress-bar wow fadeInLeft" data-progress="100%" style="width: 100%;" data-wow-duration="1.5s" data-wow-delay="1.2s"> <span>100%</span>
+                    {% with campaign.get_all_prospects as all_prospects_n %}
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                            <div class="income-dashone-total reso-mg-b-30">
+                                <div class="income-dashone-pro">
+                                    <div class="income-rate-total">
+                                        <div class="price-edu-rate">
+                                            <h3><span></span><span class="counter">{{ campaign.get_executives.count }}</span></h3>
                                         </div>
                                     </div>
+                                    <div class="income-range">
+                                        <p>All Executives</p>
+                                        <span class="income-percentange bg-green"><span class="counter">100</span>%</span>
+                                    </div>
+                                    <div class="clear"></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="analytics-edu-wrap reso-mg-b-30">
-                            <div class="skill-content-3 analytics-edu analytics-edu4">
-                                <div class="skill">
-                                    <div class="progress">
-                                        <div class="lead-content">
-                                            <h3><span class="counter">{{ leads_n }}</span></h3>
-                                            <p>Leads</p>
+                    {% endwith %}
+                </div>
+                <br>
+                <div class="row">
+                    {% with campaign.get_all_prospects as all_prospects_n %}
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                            <div class="income-dashone-total reso-mg-b-30">
+                                <div class="income-dashone-pro">
+                                    <div class="income-rate-total">
+                                        <div class="price-edu-rate">
+                                            <h3><span></span><span class="counter">{{ all_prospects_n.count }}</span></h3>
                                         </div>
-                                        <div class="progress-bar wow fadeInLeft" data-progress="{{ campaign.get_leads_percent }}%" style="width: {{ campaign.get_leads_percent }}%;" data-wow-duration="1.5s" data-wow-delay="1.2s"><span>{{ campaign.get_leads_percent }}%</span> </div>
                                     </div>
+                                    <div class="income-range">
+                                        <p>All Prospects</p>
+                                        <span class="income-percentange bg-green"><span class="counter">100</span>%</span>
+                                    </div>
+                                    <div class="clear"></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="analytics-edu-wrap reso-mg-b-30 res-tablet-mg-t-30 dk-res-t-pro-30">
-                            <div class="skill-content-3 analytics-edu analytics-edu3">
-                                <div class="skill">
-                                    <div class="progress progress-bt">
-                                        <div class="lead-content">
-                                            <h3><span class="counter">80</span>%</h3>
-                                            <p>Server down 10:32 pm</p>
-                                        </div>
-                                        <div class="progress-bar wow fadeInLeft" data-progress="80%" style="width: 80%;" data-wow-duration="1.5s" data-wow-delay="1.2s"><span>80%</span> </div>
+                    {% endwith %}
+                    {% with campaign.get_leads_percent as leads_percent %}
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="income-dashone-total">
+                            <div class="income-dashone-pro">
+                                <div class="income-rate-total">
+                                    <div class="price-edu-rate">
+                                        <h3><span class="counter">{{ campaign.get_all_leads.count }}</span></h3>
                                     </div>
                                 </div>
+                                <div class="income-range order-cl">
+                                    <p>All Leads</p>
+                                    <span class="income-percentange bg-red"><span class="counter">{{ leads_percent }}</span>%</span>
+                                </div>
+                                <div class="clear"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="analytics-edu-wrap res-tablet-mg-t-30 dk-res-t-pro-30">
-                            <div class="skill-content-3 analytics-edu analytics-edu2">
-                                <div class="skill">
-                                    <div class="progress progress-bt">
-                                        <div class="lead-content">
-                                            <h3><span class="counter">93</span>%</h3>
-                                            <p>Server down 10:32 pm</p>
-                                        </div>
-                                        <div class="progress-bar wow fadeInLeft" data-progress="93%" style="width: 93%;" data-wow-duration="1.5s" data-wow-delay="1.2s"><span>93%</span> </div>
+                    {% endwith %}
+                    {% with campaign.get_leads_percent_by_attempts as leads_percent_by_attempts %}
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="income-dashone-total res-mg-t-30 res-tablet-mg-t-30 dk-res-t-pro-30">
+                            <div class="income-dashone-pro">
+                                <div class="income-rate-total">
+                                    <div class="price-edu-rate">
+                                        <h3><span>{{ campaign.get_all_leads.count }} / {{ campaign.prospects_attempted.count }}</span></h3>
                                     </div>
                                 </div>
+                                <div class="income-range visitor-cl">
+                                    <p>All Leads Acc. Attempts</p>
+                                    <span class="income-percentange bg-blue"><span class="counter">{{ leads_percent_by_attempts }}</span>%</span>
+                                </div>
+                                <div class="clear"></div>
                             </div>
                         </div>
                     </div>
+                    {% endwith %}
+                    {% with campaign.get_attempted_prospects_percent as attempted_prospects_percent %}
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="income-dashone-total res-mg-t-30 dk-res-t-pro-30">
+                            <div class="income-dashone-pro">
+                                <div class="income-rate-total">
+                                    <div class="price-edu-rate">
+                                        <h3><span class="counter">{{ campaign.prospects_attempted.count }}</span></h3>
+                                    </div>
+                                </div>
+                                <div class="income-range low-value-cl">
+                                    <p>Attempted Prospects</p>
+                                    <span class="income-percentange bg-purple"><span class="counter">{{ attempted_prospects_percent }}</span>%</span>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endwith %}
                 </div>
             </div>
         </div>
 
+        <br>
 
         <div class="single-pro-review-area mt-t-30 mg-b-15">
             <div class="container-fluid">

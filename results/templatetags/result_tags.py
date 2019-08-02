@@ -21,5 +21,5 @@ def get_dncs_by_campaign(campaign_id, executive_id):
 
 @register.simple_tag
 def get_views_by_campaign(campaign_id, executive_id):
-    executive = get_object_or_404(Executive, id=executive_id)
+    executive = get_object_or_404(User, id=executive_id)
     return executive.result_set.filter(result_choice="View", prospect_campaign_relation__campaign_id=campaign_id).count()

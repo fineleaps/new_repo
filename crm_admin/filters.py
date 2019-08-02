@@ -5,10 +5,10 @@ import django_filters
 
 class ProspectFilter(django_filters.FilterSet):
 
-    JOB_TITLE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("job_title", flat=True).distinct()]
-    INDUSTRY_TYPE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("industry_type", flat=True).distinct()]
-    EMP_SIZE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("emp_size", flat=True).distinct()]
-    STATE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("state", flat=True).distinct()]
+    JOB_TITLE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("job_title", flat=True).distinct() if jt != ""]
+    INDUSTRY_TYPE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("industry_type", flat=True).distinct() if jt != ""]
+    EMP_SIZE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("emp_size", flat=True).distinct() if jt != ""]
+    STATE_CHOICES = [(jt, jt) for jt in Prospect.objects.values_list("state", flat=True).distinct() if jt != ""]
 
     job_title = django_filters.ChoiceFilter(choices=JOB_TITLE_CHOICES)
     industry_type = django_filters.ChoiceFilter(choices=INDUSTRY_TYPE_CHOICES)

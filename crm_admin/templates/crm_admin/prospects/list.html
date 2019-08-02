@@ -35,15 +35,16 @@
                                         data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                                         <thead>
                                             <tr>
-                                                <th data-field="state" data-checkbox="true"></th>
+                                                <th data-field="state"></th>
                                                 <th data-field="id">No</th>
-                                                <th data-field="name" data-editable="true">Name</th>
-                                                <th data-field="executives" data-editable="true">Email</th>
-                                                <th data-field="email" data-editable="true">Phone</th>
-                                                <th data-field="phone" data-editable="true">Company</th>
-                                                <th data-field="complete">Industry Typre/th>
-                                                <th data-field="task" data-editable="true">Emp Size</th>
-                                                <th data-field="city" data-editable="true">Website</th>
+                                                <th data-field="name">Name</th>
+                                                <th data-field="email">Email</th>
+                                                <th data-field="phone">Phone</th>
+                                                <th data-field="job_title">Job Title</th>
+                                                <th data-field="company">Company</th>
+                                                <th data-field="industry_type">Industry Type</th>
+                                                <th data-field="emp_size">Emp Size</th>
+                                                <th data-field="website">Website</th>
                                                 <th data-field="action">Action</th>
                                             </tr>
                                         </thead>
@@ -56,6 +57,7 @@
                                                     <td>{{ prospect.get_display_text }}</td>
                                                     <td>{{ prospect.email }}</td>
                                                     <td>{{ prospect.phone }}</td>
+                                                    <td>{{ prospect.job_title }}</td>
                                                     <td>{{ prospect.company }}</td>
                                                     <td>{{ prospect.industry_type }}</td>
                                                     <td>{{ prospect.emp_size }}</td>

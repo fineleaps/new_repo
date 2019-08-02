@@ -1,0 +1,46 @@
+    {% load static %}
+    <div class="left-sidebar-pro">
+        <nav id="sidebar" class="">
+            <div class="sidebar-header">
+                <a href="{% url "portal:home" %}"><img class="main-logo" src="{% static "img/logo/logosn.png" %}" alt="" /><br><span class="main-logo">Fine-Leap Systems</span></a>
+                <strong><a href="{% url "portal:home" %}"><img src="{% static "img/logo/logosn.png" %}" alt="" /></a></strong>
+            </div>
+            <div class="left-custom-menu-adp-wrap comment-scrollbar">
+                <nav class="sidebar-nav left-sidebar-menu-pro">
+                    <ul class="metismenu" id="menu1">
+                        <li>
+                            <a title="Landing Page" href="{% url 'crm_admin:executive_list' %}" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Executives</span></a>
+                        </li>
+                        <li>
+                            <a title="Landing Page" href="{% url 'crm_admin:campaign_list' %}" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Campaigns</span></a>
+                        </li>
+                        <li>
+                            <a title="Landing Page" href="{% url 'crm_admin:client_list' %}" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Clients</span></a>
+                        </li>
+                        <li>
+                            <a title="Landing Page" href="{% url 'crm_admin:prospect_list' %}" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Prospects</span></a>
+                        </li>
+                        <li>
+                            <a title="Landing Page" href="{% url 'crm_admin:prospect_list_filter' %}" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Prospects Filter</span></a>
+                        </li>
+                        <li>
+                            <a title="Landing Page" href="{% url "results:leads_list" %}" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Leads</span></a>
+                        </li>
+                        <li>
+                            <a title="Landing Page" href="{% url "results:views_list" %}" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Views</span></a>
+                        </li>
+                        <li>
+                            <a title="Landing Page" href="{% url "results:dncs_list" %}" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">DNCS</span></a>
+                        </li>
+                        <li>
+                            <a title="Landing Page" href="{% url "crm_admin:progress" %}" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Progress</span></a>
+                        </li>
+                        <li>
+                            <a title="Landing Page" href="{% url "portal:profile_update" %}" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Profile</span></a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+    </div>

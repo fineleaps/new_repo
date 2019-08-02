@@ -9,9 +9,10 @@ from clients.models import Client
 
 def get_percent(a, b):
     try:
-        return (int(a)/int(b))*100
+        return round((int(a)/int(b))*100, 2)
     except:
         return 0
+
 
 class Campaign(models.Model):
 
@@ -38,6 +39,7 @@ class Campaign(models.Model):
 
     @property
     def get_executives(self):
+        print(self.executives.all())
         return self.executives.all()
 
     @property
@@ -77,7 +79,7 @@ class Campaign(models.Model):
 
     @property
     def get_absolute_url(self):
-        return reverse_lazy("portal:campaign_detail", kwargs={'slug': self.slug})
+        return reverse_lazy("campaigns:detail", kwargs={'slug': self.slug})
 
     @property
     def get_all_prospects(self):
@@ -106,19 +108,19 @@ class Campaign(models.Model):
 
     @property
     def get_leads_percent(self):
-        return get_percent(self.get_all_leads.count, self.get_all_prospects.count)
+        return get_percent(self.get_all_leads.count(), self.get_all_prospects.count())
 
     @property
     def get_attempted_prospects_percent(self):
-        return get_percent(self.prospects_attempted.count, self.get_all_prospects.count)
+        return get_percent(self.prospects_attempted.count(), self.get_all_prospects.count())
 
     @property
     def get_non_attempted_prospects_percent(self):
-        return get_percent(self.prospects_non_attempted.count , self.get_all_prospects.count)
+        return get_percent(self.prospects_non_attempted.count(), self.get_all_prospects.count())
 
     @property
     def get_leads_percent_by_attempts(self):
-        return get_percent(self.get_all_leads.count, self.prospects_attempted.count)
+        return get_percent(self.get_all_leads.count(), self.prospects_attempted.count())
 
     @property
     def get_all_views(self):

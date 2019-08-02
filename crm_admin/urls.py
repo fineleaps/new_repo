@@ -9,7 +9,7 @@ app_name = "crm_admin"
 urlpatterns = [
 
     url(r'^$', views.HomeView.as_view(), name="home"),
-    url(r'^campaigns/list/$', views.CampaignListView.as_view(), name='campagin_list'),
+    url(r'^campaigns/list/$', views.CampaignListView.as_view(), name='campaign_list'),
     url(r'^campaigns/add/$', views.CampaignAddView.as_view(), name='campaign_add'),
     url(r'^campaigns/detail/(?P<slug>[-\w]+)/$', views.CampaignDetailView.as_view(), name="campaign_detail"),
     url(r'^campaigns/update/(?P<slug>[-\w]+)/$', views.CampaignUpdateView.as_view(), name="campaign_update"),

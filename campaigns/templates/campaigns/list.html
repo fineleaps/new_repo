@@ -37,9 +37,9 @@
                                                 </td>
                                                 <td>{{ campaign.start_date }}</td>
                                                 <td>{{ campaign.end_date }}</td>
-                                                <td>{% get_leads_by_campaign campaign_id=campaign.id executive_id=user.executive.id %}</td>
-                                                <td>{% get_views_by_campaign campaign_id=campaign.id executive_id=user.executive.id %}</td>
-                                                <td>{% get_dncs_by_campaign campaign_id=campaign.id executive_id=user.executive.id %}</td>
+                                                <td>{% get_leads_by_campaign campaign_id=campaign.id executive_id=user.id %}</td>
+                                                <td>{% get_views_by_campaign campaign_id=campaign.id executive_id=user.id %}</td>
+                                                <td>{% get_dncs_by_campaign campaign_id=campaign.id executive_id=user.id %}</td>
                                                 <td>
                                                     <a href="{{ campaign.get_absolute_url }}">
                                                         <button data-toggle="tooltip" title="Go" class="pd-setting-ed"><i class="fa fa-eye" aria-hidden="true"></i></button>

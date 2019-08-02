@@ -38,6 +38,7 @@
                                                 <th data-field="status">Status</th>
                                                 <th data-field="start_date">Start Date</th>
                                                 <th data-field="end_date">End Date</th>
+                                                <th data-field="prospects">Prospects</th>
                                                 <th data-field="leads">Leads</th>
                                                 <th data-field="views">Views</th>
                                                 <th data-field="dncs">DNCS</th>
@@ -54,11 +55,14 @@
                                                     <td>{{ campaign.get_executives.count }}</td>
                                                     <td>{{ campaign.get_active_status }}</td>
                                                     <td>{{ campaign.start_date }}</td>
-                                                    <td class="datatable-ct"><span class="pie">{{ campaign.end_date }}</span></td>
+                                                    <td>{{ campaign.end_date }}</td>
+                                                    <td>{{ campaign.prospects_non_attempted.count }} / {{ campaign.get_all_prospects.count }}</td>
                                                     <td>{{ campaign.get_all_leads.count }}</td>
                                                     <td>{{ campaign.get_all_views.count }}</td>
                                                     <td>{{ campaign.get_all_dncs.count }}</td>
-                                                    <td class="datatable-ct"><a href="{{ campaign.get_admin_update_url }}"><i class="fa fa-eye"></i></a></td>
+                                                    <td class="datatable-ct">
+                                                        <a href="{{ campaign.get_admin_update_url }}"> <i class="fa fa-eye"> </i> </a>
+                                                    </td>
                                                 </tr>
                                             {% endfor %}
                                         </tbody>

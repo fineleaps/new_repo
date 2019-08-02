@@ -7,6 +7,12 @@ from django.urls import reverse_lazy
 from clients.models import Client
 
 
+def get_percent(a, b):
+    try:
+        return (int(a)/int(b))*100
+    except:
+        return 0
+
 class Campaign(models.Model):
 
     client = models.ForeignKey(Client, on_delete=models.SET_NULL, null=True, blank=True)
@@ -73,6 +79,9 @@ class Campaign(models.Model):
     def get_absolute_url(self):
         return reverse_lazy("portal:campaign_detail", kwargs={'slug': self.slug})
 
+    @property
+    def get_all_prospects(self):
+        return self.prospects.all()
 
     @property
     def prospects_attempted(self):
@@ -94,6 +103,22 @@ class Campaign(models.Model):
     @property
     def get_all_leads(self):
         return Result.objects.filter(prospect_campaign_relation__campaign=self, result_choice="Lead")
+
+    @property
+    def get_leads_percent(self):
+        return get_percent(self.get_all_leads.count, self.get_all_prospects.count)
+
+    @property
+    def get_attempted_prospects_percent(self):
+        return get_percent(self.prospects_attempted.count, self.get_all_prospects.count)
+
+    @property
+    def get_non_attempted_prospects_percent(self):
+        return get_percent(self.prospects_non_attempted.count , self.get_all_prospects.count)
+
+    @property
+    def get_leads_percent_by_attempts(self):
+        return get_percent(self.get_all_leads.count, self.prospects_attempted.count)
 
     @property
     def get_all_views(self):

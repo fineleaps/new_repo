@@ -7,12 +7,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from . import alert_messages
 from django.contrib import messages
-from .forms import CampaignUpdateForm, CampaignAddForm, ClientAddForm, ClientUpdateForm, CustomUserCreationForm
+from .forms import (CampaignUpdateForm, CampaignAddForm, ClientAddForm, ClientUpdateForm,
+                    CustomUserCreationForm, ProspectAddForm, ProspectUpdateForm, ProspectUpdateUpdateForm)
 from clients.models import Client
-from prospects.models import Prospect
+from prospects.models import Prospect, ProspectUpdate
 from .filters import ProspectFilter, ResultFilter
 from django_filters.views import FilterView
 from portal.models import User
+from prospects.filters import ProspectUpdateFilter
 
 
 def superuser_required():
@@ -58,10 +60,6 @@ class CampaignUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "crm_admin/campaigns/update.html"
     success_url = reverse_lazy("crm_admin:campaign_list")
 
-    # def get_success_url(self):
-    #     campaign = self.get_object()
-    #     return campaign.get_admin_update_url
-
     def form_valid(self, form):
         messages.success(self.request, alert_messages.CAMPAIGN_UPDATED_MESSAGE)
         return super().form_valid(form)
@@ -74,10 +72,6 @@ class CampaignAddView(LoginRequiredMixin, CreateView):
     form_class = CampaignAddForm
     template_name = "crm_admin/campaigns/add.html"
     success_url = reverse_lazy("crm_admin:campaign_list")
-
-    # def get_success_url(self):
-    #     campaign = self.get_object()
-    #     return campaign.get_admin_update_url
 
     def form_valid(self, form):
         messages.success(self.request, alert_messages.CAMPAIGN_ADDED_MESSAGE)
@@ -95,7 +89,6 @@ class CampaignDeleteView(LoginRequiredMixin, DeleteView):
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, alert_messages.CAMPAIGN_DELETED_MESSAGE)
         return super().delete(self, request, *args, **kwargs)
-
 
 
 @superuser_required()
@@ -122,12 +115,8 @@ class ClientUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "crm_admin/clients/update.html"
     success_url = reverse_lazy("crm_admin:client_list")
 
-    # def get_success_url(self):
-    #     client = self.get_object()
-    #     return client.get_admin_update_url
-
     def form_valid(self, form):
-        messages.success(self.request, alert_messages.CAMPAIGN_UPDATED_MESSAGE)
+        messages.success(self.request, alert_messages.CLIENT_UPDATED_MESSAGE)
         return super().form_valid(form)
 
 
@@ -137,15 +126,7 @@ class ClientAddView(LoginRequiredMixin, CreateView):
     model = Client
     form_class = ClientAddForm
     template_name = "crm_admin/clients/add.html"
-    success_url = reverse_lazy("crm_admin:home")
-
-    # def get_success_url(self):
-    #     client = self.get_object()
-    #     return client.get_admin_update_url
-
-    def get_object(self, queryset=None):
-        client = self.get_object()
-        return client
+    success_url = reverse_lazy("crm_admin:client_list")
 
     def form_valid(self, form):
         messages.success(self.request, alert_messages.CLIENT_ADDED_MESSAGE)
@@ -179,6 +160,49 @@ class ProspectListFilterView(LoginRequiredMixin, FilterView):
     filterset_class = ProspectFilter
     template_name = "crm_admin/prospects/list_filter.html"
     context_object_name = "prospects"
+
+
+@superuser_required()
+class ProspectAddView(LoginRequiredMixin, CreateView):
+
+    model = Prospect
+    form_class = ProspectAddForm
+    template_name = "crm_admin/prospects/add.html"
+    success_url = reverse_lazy("crm_admin:prospect_list_filter")
+
+    def form_valid(self, form):
+        messages.success(self.request, alert_messages.PROSPECT_ADDED_MESSAGE)
+        return super().form_valid(form)
+
+
+@superuser_required()
+class ProspectUpdateView(LoginRequiredMixin, UpdateView):
+
+    model = Prospect
+    template_name = "crm_admin/prospects/update.html"
+    success_url = reverse_lazy("crm_admin:prospect_list_filter")
+    form_class = ProspectUpdateForm
+    slug_field = "id"
+    slug_url_kwarg = "id"
+
+    def form_valid(self, form):
+        messages.success(self.request, alert_messages.PROSPECT_UPDATED_MESSAGE)
+        return super().form_valid(form)
+
+
+@superuser_required()
+class ProspectDeleteView(LoginRequiredMixin, DeleteView):
+
+    model = Prospect
+    template_name = "crm_admin/prospects/delete.html"
+    context_object_name = "prospect"
+    success_url = reverse_lazy("crm_admin:prospect_list_filter")
+    slug_field = "id"
+    slug_url_kwarg = "id"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, alert_messages.PROSPECT_DELETED_MESSAGE)
+        return super().delete(self, request, *args, **kwargs)
 
 
 @superuser_required()
@@ -242,3 +266,41 @@ class ExecutiveAddView(CreateView):
     def form_valid(self, form):
         messages.success(self.request, alert_messages.EXECUTIVE_ADDED_MESSAGE)
         return super().form_valid(form)
+
+
+@superuser_required()
+class ProspectUpdateListFilterView(LoginRequiredMixin, FilterView):
+
+    filterset_class = ProspectUpdateFilter
+    context_object_name = "prospect_updates"
+    template_name = 'crm_admin/prospect_updates/list_filter.html'
+
+
+@superuser_required()
+class ProspectUpdateUpdateView(LoginRequiredMixin, UpdateView):
+
+    model = ProspectUpdate
+    template_name = "crm_admin/prospect_updates/update.html"
+    success_url = reverse_lazy("crm_admin:prospect_update_list_filter")
+    form_class = ProspectUpdateUpdateForm
+    slug_field = "id"
+    slug_url_kwarg = "id"
+
+    def form_valid(self, form):
+        messages.success(self.request, alert_messages.PROSPECT_UPDATE_UPDATED_MESSAGE)
+        return super().form_valid(form)
+
+
+@superuser_required()
+class ProspectUpdateDeleteView(LoginRequiredMixin, DeleteView):
+
+    model = ProspectUpdate
+    template_name = "crm_admin/prospect_updates/delete.html"
+    context_object_name = "prospect_update"
+    success_url = reverse_lazy("crm_admin:prospect_update_list_filter")
+    slug_field = "id"
+    slug_url_kwarg = "id"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, alert_messages.PROSPECT_UPDATE_DELETED_MESSAGE)
+        return super().delete(self, request, *args, **kwargs)

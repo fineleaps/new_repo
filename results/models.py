@@ -4,13 +4,13 @@ from django.core.exceptions import ValidationError
 
 class Result(models.Model):
 
-    ResultChoices = (('Lead', 'Lead'), ('View', 'View'), ("NR", "No Response"), ('DNC', 'DNC'))
+    ResultChoices = (('Lead', 'Lead'), ('View', 'View'), ("CB", "Callback"), ('DNC', 'DNC'))
 
     prospect_campaign_relation = models.OneToOneField('campaigns.ProspectCampaignRelation', on_delete=models.CASCADE)
     on = models.DateTimeField(auto_now_add=True)
     by = models.ForeignKey('portal.User', on_delete=models.CASCADE)
     result_choice = models.CharField(max_length=2, choices=ResultChoices)
-    details = models.TextField(blank=True)
+    details = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return "{} -{} - {}".format(self.prospect_campaign_relation.prospect, self.prospect_campaign_relation.campaign,

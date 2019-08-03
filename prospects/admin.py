@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from campaigns.models import Campaign, ProspectCampaignRelation
+from .models import ProspectUpdate
 
 
 class ProspectAdmin(admin.ModelAdmin):
@@ -32,3 +33,12 @@ class ProspectAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Prospect, ProspectAdmin)
+
+
+class ProspectUpdateAdmin(admin.ModelAdmin):
+
+    list_display = ("prospect_campaign_relation", "by", "is_approved")
+    list_filter = ("prospect_campaign_relation__campaign", "prospect_campaign_relation__prospect", "by", "is_approved")
+
+
+admin.site.register(ProspectUpdate, ProspectUpdateAdmin)

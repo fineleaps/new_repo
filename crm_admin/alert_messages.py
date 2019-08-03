@@ -15,6 +15,16 @@ EXECUTIVE_ADDED_MESSAGE = "Executive Added Successfully."
 EXECUTIVE_DELETED_MESSAGE = "Executive Deleted Successfully."
 
 
+PROSPECT_UPDATED_MESSAGE = "Prospect Updated Successfully."
+PROSPECT_ADDED_MESSAGE = "Prospect Added Successfully."
+PROSPECT_DELETED_MESSAGE = "Prospect Deleted Successfully."
+
+
+PROSPECT_UPDATE_UPDATED_MESSAGE = "Prospect Update Updated Successfully."
+PROSPECT_UPDATE_ADDED_MESSAGE = "Prospect Update Added Successfully."
+PROSPECT_UPDATE_DELETED_MESSAGE = "Prospect Update Deleted Successfully."
+
+
 
 
 # WARNING MESSAGES

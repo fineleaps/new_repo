@@ -22,13 +22,19 @@ urlpatterns = [
     url(r'^clients/delete/(?P<slug>[-\w]+)/$', views.ClientDeleteView.as_view(), name="client_delete"),
 
     url(r"^prospects/list/$", views.ProspectListView.as_view(), name="prospect_list"),
+    url(r"^prospects/add/$", views.ProspectAddView.as_view(), name="prospect_add"),
     url(r"^prospects/list/filter/$", views.ProspectListFilterView.as_view(), name="prospect_list_filter"),
-    url(r'^executives/update/(?P<id>[0-9]+)/$', views.ExecutiveUpdateView.as_view(), name="executive_update"),
+    url(r'^prospects/update/(?P<id>[0-9]+)/$', views.ProspectUpdateView.as_view(), name="prospect_update"),
+    url(r'^prospects/delete/(?P<id>[0-9]+)/$', views.ProspectDeleteView.as_view(), name="prospect_delete"),
 
     url(r"^executives/list/$", views.ExecutiveListView.as_view(), name="executive_list"),
     url(r"^executives/add/$", views.ExecutiveAddView.as_view(), name="executive_add"),
     url(r'^executives/update/(?P<id>[0-9]+)/$', views.ExecutiveUpdateView.as_view(), name="executive_update"),
     url(r'^executives/delete/(?P<id>[0-9]+)/$', views.ExecutiveDeleteView.as_view(), name="executive_delete"),
+
+    url(r"^prospects/updates/list/filter/$", views.ProspectUpdateListFilterView.as_view(), name="prospect_update_list_filter"),
+    url(r'^prospects/updates/update/(?P<id>[0-9]+)/$', views.ProspectUpdateUpdateView.as_view(), name="prospect_update_update"),
+    url(r'^prospects/updates/delete/(?P<id>[0-9]+)/$', views.ProspectUpdateDeleteView.as_view(), name="prospect_update_delete"),
 
     url(r'^progress/$', views.ProgressFilterView.as_view(), name='progress'),
 

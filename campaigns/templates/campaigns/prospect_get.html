@@ -1,169 +1,168 @@
 {% extends "portal/base.html" %}
 {% load crispy_forms_tags %}
-
 {% block title %}Home{% endblock %}
-
 {% block content %}
-
-
 <div class="container">
-
-
-
-
-
-
     <div class="row panel panel-primary " style="margin-top:2%;">
-            <div class="panel-body">
-                {% if prospect %}
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12">
-                                    <ul class="nav nav-tabs">
-                                        <li class="active"><a data-toggle="tab" href="#basic_information" class="text-primary"><i class="fa fa-indent"></i> Basic Information</a></li>
-                                        <li><a data-toggle="tab" href="#script" class="text-primary"><i class="fa fa-bookmark-o"></i> Script</a></li>
-                                    </ul>
+        <div class="panel-body">
+            {% if prospect %}
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#basic_information" class="text-primary"><i class="fa fa-indent"></i> Basic Information</a></li>
+                            <li><a data-toggle="tab" href="#script" class="text-primary"><i class="fa fa-bookmark-o"></i> Script</a></li>
+                        </ul>
+                        <div class="tab-content">
+                                    <div id="basic_information" class="tab-pane fade in active">
+                                        <div class="table-responsive panel">
+                                            <table class="table">
+                                                <tbody>
+                                                        <tr>
+                                                            <td class="text-primary"><i class="fa fa-user"></i> First Name</td>
+                                                            <td>{{ prospect.first_name }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary"><i class="fa fa-user"></i> Last Name</td>
+                                                            <td>{{ prospect.last_name }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary"><i class="fa fa-envelope-o"></i> Email ID</td>
+                                                            <td>{{ prospect.email }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary"><i class="glyphicon glyphicon-phone"></i> Mobile Number</td>
+                                                            <td>{{ prospect.phone }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary"><i class="glyphicon glyphicon-globe"></i> Website</td>
+                                                            <td>{{ prospect.phone }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary"><i class="fa fa-book"></i>Job Title</td>
+                                                            <td>{{ prospect.job_title }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary"><i class="fa fa-university"></i> Company</td>
+                                                            <td>{{ prospect.company }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary"><i class="fa fa-group"></i> Emp Size</td>
+                                                            <td>{{ prospect.emp_size }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary"><i class="fa fa-group"></i> Industry Type</td>
+                                                            <td>{{ prospect.industry_type }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary"><i class="fa fa-group"></i> Zip Code</td>
+                                                            <td>{{ prospect.zip_code }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary"><i class="fa fa-group"></i> City</td>
+                                                            <td>{{ prospect.city }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary"><i class="fa fa-group"></i> State</td>
+                                                            <td>{{ prospect.state }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary"><i class="fa fa-flag"></i> Country</td>
+                                                            <td>{{ prospect.country }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary"><i class="fa fa-list-ol"></i> Details</td>
+                                                            <td>{{ prospect.details }}</td>
+                                                        </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
 
-                                    <div class="tab-content">
-                                        <div id="basic_information" class="tab-pane fade in active">
-
-                                            <div class="table-responsive panel">
-                                                <table class="table">
-                                                    <tbody>
-
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-user"></i> First Name</td>
-                                                                <td>{{ prospect.first_name }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-user"></i> Last Name</td>
-                                                                <td>{{ prospect.last_name }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-envelope-o"></i> Email ID</td>
-                                                                <td>{{ prospect.email }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="glyphicon glyphicon-phone"></i> Mobile Number</td>
-                                                                <td>{{ prospect.phone }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="glyphicon glyphicon-globe"></i> Website</td>
-                                                                <td>{{ prospect.phone }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-book"></i>Job Title</td>
-                                                                <td>{{ prospect.job_title }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-university"></i> Company</td>
-                                                                <td>{{ prospect.company }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-group"></i> Emp Size</td>
-                                                                <td>{{ prospect.emp_size }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-group"></i> Industry Type</td>
-                                                                <td>{{ prospect.industry_type }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-group"></i> Zip Code</td>
-                                                                <td>{{ prospect.zip_code }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-group"></i> City</td>
-                                                                <td>{{ prospect.city }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-group"></i> State</td>
-                                                                <td>{{ prospect.state }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-flag"></i> Country</td>
-                                                                <td>{{ prospect.country }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-primary"><i class="fa fa-list-ol"></i> Details</td>
-                                                                <td>{{ prospect.details }}</td>
-                                                            </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                            <div class="panel text-muted">
-                                                <div class="">
-                                                    <h4 class="text-center">Add Response</h4>
-                                                    <form method="post" action="{% url 'results:result_add' campaign_slug=campaign.slug prospect_id=prospect.id %}">
-                                                    {% csrf_token %}
-                                                    <div class="form-group col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                                                <label class="login2 pull-left pull-left-pro">Select Result Response</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                                                                <div class="bt-df-checkbox pull-left">
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                            <div class="i-checks pull-left">
-                                                                                <label>
-                                                                                        <input name="result_choice" type="radio" checked value="View"> <i></i>View</label>
-                                                                            </div>
+                                        <div class="panel text-muted">
+                                            <div class="">
+                                                <h4 class="text-center">Add Response</h4>
+                                                <form method="post" action="{% url 'results:result_add' campaign_slug=campaign.slug prospect_id=prospect.id %}">
+                                                {% csrf_token %}
+                                                <div class="form-group col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                            <label class="login2 pull-left pull-left-pro">Select Result Response</label>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                                            <div class="bt-df-checkbox pull-left">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                        <div class="i-checks pull-left">
+                                                                            <label>
+                                                                                    <input name="result_choice" type="radio" checked value="View"> <i></i>View</label>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                            <div class="i-checks pull-left">
-                                                                                <label>
-                                                                                        <input name="result_choice" type="radio" value="Lead"> <i></i>Lead</label>
-                                                                            </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                        <div class="i-checks pull-left">
+                                                                            <label>
+                                                                                    <input name="result_choice" type="radio" value="Lead"> <i></i>Lead</label>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                            <div class="i-checks pull-left">
-                                                                                <label>
-                                                                                        <input name="result_choice" type="radio" value="NR"> <i></i>No Response</label>
-                                                                            </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                        <div class="i-checks pull-left">
+                                                                            <label>
+                                                                                    <input name="result_choice" type="radio" value="CB"> <i></i>Callback</label>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row">
-                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                            <div class="i-checks pull-left">
-                                                                                <label>
-                                                                                    <input name="result_choice" type="radio" value="DNC" > <i></i> <span class="basic-ds-n">DNC</span></label>
-                                                                            </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                        <div class="i-checks pull-left">
+                                                                            <label>
+                                                                                <input name="result_choice" type="radio" value="DNC" > <i></i> <span class="basic-ds-n">DNC</span></label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group col-lg-6">
-                                                        <label for="result_details">Add Message</label>
-                                                        <div class="form-">
-                                                            <textarea id="result_details" name="result_details"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="text-center">
-                                                        <input class="btn btn-primary" type="submit" value="Submit">
-                                                    </div>
-                                                </form>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div id="script" class="tab-pane fade">
-                                            <div class="table-responsive panel">
-                                                <br><br>
-                                                <p><span class="text-primary"><b>Script : </b></span> {{ campaign.script }}</p>
+                                                <div class="form-group col-lg-6">
+                                                    <label for="result_details">Add Message</label>
+                                                    <div class="form-">
+                                                        <textarea id="result_details" name="result_details"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <input class="btn btn-primary" type="submit" value="Submit">
+                                                </div>
+                                            </form>
                                             </div>
                                         </div>
                                     </div>
-                        </div>
+
+                                    <div id="script" class="tab-pane fade">
+                                        <div class="table-responsive panel">
+                                            <br><br>
+                                            <p><span class="text-primary"><b>Script : </b></span> {{ campaign.script }}</p>
+                                        </div>
+                                    </div>
+                                </div>
                     </div>
-                {% else %}
-                    <span class="alert alert-warning">No more prospects</span>
-                {% endif %}
-            </div>
+                </div>
+
+                <form method="post" action="{% url 'campaigns:prospect_update_add' campaign_slug=campaign.slug prospect_id=prospect.id %}">
+                    {% csrf_token %}
+
+                    {{ prospect_update_add_form|crispy }}
+
+                    <input class="btn btn-primary" type="submit" value="Submit Changes">
+
+                </form>
+
+
+            {% else %}
+                <span class="alert alert-warning">No more prospects</span>
+            {% endif %}
         </div>
+    </div>
 </div>
 {% endblock %}

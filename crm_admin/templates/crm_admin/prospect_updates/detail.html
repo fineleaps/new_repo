@@ -1,0 +1,32 @@
+{% extends "crm_admin/base.html" %}
+{% load static %}
+{% load result_tags %}
+
+{% block title %}Campaigns{% endblock %}
+
+{% block content %}
+
+    <div class="modal-edu-general text-center">
+                            <div class="modal-dialog" style="width: 60%">
+                                <div class="modal-content">
+                                    <div class="modal-header header-color-modal bg-color-1">
+                                        <h4 class="modal-title">{{ campaign.name }}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <i class="educate-icon educate-calender modal-check-pro"></i>
+                                        <h4>Aim : {{ campaign.get_aim }}</h4>
+                                        <p><b>Description : </b>{{ campaign.details }}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="{% url "campaigns:prospect_get" slug=campaign.slug %}">Get Prospect</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    <div class="clearfix"></div>
+    <br><br><br>
+
+{% endblock %}
+
+
+

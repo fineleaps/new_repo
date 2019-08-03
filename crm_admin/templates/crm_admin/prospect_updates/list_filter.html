@@ -1,14 +1,39 @@
 {% extends "crm_admin/base.html" %}
 {% load result_tags %}
+{% load crispy_forms_tags %}
 {% load static %}
 {% block title %}All Prospect{% endblock %}
 
 {% block content %}
 
 
+            <div class="container">
+                <form method="get">
 
-            <div class="data-table-area mg-b-15">
-            <div class="container-fluid">
+                    <div class="row">
+                        <div class="form-group col-lg-2">
+                            {{ filter.form.prospect_campaign_relation__campaign|as_crispy_field }}
+                        </div>
+                        <div class="form-group col-lg-3">
+                            {{ filter.form.by|as_crispy_field }}
+                        </div>
+                        <div class="form-group col-lg-3">
+                            {{ filter.form.created_on|as_crispy_field }}
+                        </div>
+                        <div class="form-group col-lg-3">
+                            {{ filter.form.is_approved|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <input class="btn btn-primary" type="submit" value="Filter">
+                </form>
+                <br>
+            </div>
+
+
+
+<div class="data-table-area mg-b-15">
+                <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="sparkline13-list">
@@ -35,34 +60,28 @@
                                         data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                                         <thead>
                                             <tr>
-                                                <th data-field="state"></th>
+                                                <th data-field="state" data-checkbox="true"></th>
                                                 <th data-field="id">No</th>
                                                 <th data-field="name">Name</th>
-                                                <th data-field="email">Email</th>
-                                                <th data-field="phone">Phone</th>
-                                                <th data-field="job_title">Job Title</th>
-                                                <th data-field="company">Company</th>
-                                                <th data-field="industry_type">Industry Type</th>
-                                                <th data-field="emp_size">Emp Size</th>
-                                                <th data-field="website">Website</th>
+                                                <th data-field="by_executive">Executive</th>
+                                                <th data-field="campaign">Campaign</th>
+                                                <th data-field="created_on">Created On</th>
+                                                <th data-field="approved">Approved</th>
                                                 <th data-field="action">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-                                            {% for prospect in prospects %}
+                                            {% for prospect_update in prospect_updates %}
                                                 <tr>
                                                     <td></td>
                                                     <td>{{ forloop.counter }}</td>
-                                                    <td>{{ prospect.get_display_text }}</td>
-                                                    <td>{{ prospect.email }}</td>
-                                                    <td>{{ prospect.phone }}</td>
-                                                    <td>{{ prospect.job_title }}</td>
-                                                    <td>{{ prospect.company }}</td>
-                                                    <td>{{ prospect.industry_type }}</td>
-                                                    <td>{{ prospect.emp_size }}</td>
-                                                    <td>{{ prospect.city }}</td>
-                                                    <td class="datatable-ct"><a href="{{ prospect.get_admin_update_url }}"><i class="fa fa-eye"></i></a></td>
+                                                    <td>{{ prospect_update.prospect_campaign_relation.prospect.get_display_text }}</td>
+                                                    <td>{{ prospect_update.by.get_display_text }}</td>
+                                                    <td>{{ prospect_update.prospect_campaign_relation.campaign.get_display_text }}</td>
+                                                    <td>{{ prospect_update.created_on }}</td>
+                                                    <td>{{ prospect_update.is_approved }}</td>
+                                                    <td class="datatable-ct"><a href="{{ prospect_update.get_admin_update_url }}"><i class="fa fa-eye"></i></a></td>
                                                 </tr>
                                             {% endfor %}
                                         </tbody>
@@ -73,5 +92,32 @@
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
+
+
+
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

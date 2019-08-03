@@ -1,4 +1,9 @@
     {% load static %}
+    <style>
+        .fa-lightgray{
+            color: #8d9498!important;
+        }
+    </style>
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
@@ -9,7 +14,7 @@
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="metismenu" id="menu1">
                         <li>
-                            <a title="Landing Page" href="{% url "campaigns:list" %}" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Campaigns</span></a>
+                            <a title="Landing Page" href="{% url "campaigns:list" %}" aria-expanded="false"><span class="educate-icon educate-project icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Campaigns</span></a>
                         </li>
 
                         <li>
@@ -22,10 +27,13 @@
                             <a title="Landing Page" href="{% url "results:dncs_list" %}" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">DNCS</span></a>
                         </li>
                         <li>
-                            <a title="Landing Page" href="{% url "results:progress" %}" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Progress</span></a>
+                            <a title="Landing Page" href="{% url "results:progress" %}" aria-expanded="false"><span class="fa fa-lightgray fa-area-chart icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Progress</span></a>
                         </li>
                         <li>
                             <a title="Landing Page" href="{% url "portal:profile_update" %}" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Profile</span></a>
+                        </li>
+                        <li>
+                            <a title="Landing Page" href="{% url "portal:logout" %}" aria-expanded="false"><span class="fa fa-lightgray fa-power-off icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Logout</span></a>
                         </li>
 
                     </ul>

@@ -3,6 +3,7 @@ from campaigns.models import Campaign
 from clients.models import Client
 from django.contrib.auth.forms import UserCreationForm
 from portal.models import User
+from prospects.models import Prospect, ProspectUpdate
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -43,3 +44,26 @@ class ClientAddForm(forms.ModelForm):
     class Meta:
         model = Client
         exclude = ('added_on', 'slug', )
+
+
+class ProspectAddForm(forms.ModelForm):
+
+    class Meta:
+
+        model = Prospect
+        exclude = ("created_on", "updated_on")
+
+
+class ProspectUpdateForm(forms.ModelForm):
+
+    class Meta:
+
+        model = Prospect
+        exclude = ("created_on", "updated_on")
+
+class ProspectUpdateUpdateForm(forms.ModelForm):
+
+    class Meta:
+
+        model = ProspectUpdate
+        exclude = ("created_on", "updated_on")
